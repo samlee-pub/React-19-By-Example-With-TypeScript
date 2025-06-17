@@ -1,0 +1,108 @@
+/* styles.css */
+.toctree-wrapper ul li.toctree-l1 {
+    list-style: none !important; /* Remove bullet points */
+    padding-left: 0 !important; /* Fix indentation */
+    margin-left: 0 !important; /* Fix indentation */
+}
+
+/* styles.css */
+.toctree-wrapper ol li.toctree-l1 {
+    list-style: none !important; /* Remove bullet points */
+    padding-left: 0 !important; /* Fix indentation */
+    margin-left: 0 !important; /* Fix indentation */
+}
+
+/* first level padding-left */
+.toctree-wrapper > ul {
+    padding-left: 1rem !important; /* Fix indentation */
+}
+
+/* first level padding-left */
+.toctree-wrapper > ol {
+    padding-left: 1rem !important; /* Fix indentation */
+}
+
+/*  second level padding-left */
+section > ul.simple {
+    padding-left: 2rem !important; /* Fix indentation */
+}
+
+/*  second level padding-left */
+section > ol.simple {
+    padding-left: 2rem !important; /* Fix indentation */
+}
+
+/*  blockquote border */
+section >  blockquote {
+    border: 0 !important; /* Fix indentation */
+    margin: 0 !important;
+    padding-left: 1rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+/*  blockquote border */
+section >  blockquote div.code-block-caption {
+    margin: 0.5rem !important;
+}
+/*  blockquote border */
+section >  blockquote div pre {
+    margin: 0.5rem !important;
+}
+
+pre {
+ /*padding:30px;*/
+ box-sizing:border-box;
+ -moz-box-sizing:border-box;
+ webkit-box-sizing:border-box;
+ display:block; 
+ white-space: pre-wrap;  
+ white-space: -moz-pre-wrap; 
+ white-space: -pre-wrap; 
+ white-space: -o-pre-wrap; 
+ /*word-wrap: break-word;*/
+ word-break: break-all;
+ width:100%;
+ /*overflow-x:auto;*/
+ page-break-before:avoid;
+ page-break-after: auto;
+ page-break-inside:auto;
+ break-inside:auto;
+}
+/*  blockquote border */
+section >  blockquote ol, section >  blockquote ul {
+    border: 0 !important; /* Fix indentation */
+    margin: 0rem !important;
+}
+/*  blockquote border */
+section >  blockquote ol li p, section >  blockquote ul li p {
+    border: 0 !important; /* Fix indentation */
+    margin: 0rem !important;
+}
+
+.document .documentwrapper .body section > section > h3 > span.section-number {
+    display: none;
+    visibility: hidden;
+}
+
+/* TOC Title margin-bottom */
+#contents > h1 {
+    margin-bottom: 1rem !important; /* Fix indentation */
+}
+
+/* TOC Title margin-bottom */
+.contents-h1-mb-1 {
+    margin-bottom: 1rem !important; /* Fix indentation */
+}
+
+.console-block-bg-black-fg-white div.highlight pre {
+  background: black;
+  color: white;
+  border: 0 !important; /* Fix indentation */
+  margin: 0rem !important;
+  padding-left: 0rem !important;
+  padding-right: 1rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}

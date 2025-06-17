@@ -1,0 +1,18 @@
+@import "html_leanbook.css";
+
+/* html_leanbook1 styles */
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: "ss02"; /* to differentiate lowercase l and uppercase I */
+}
+
+blockquote p {
+  font-size: 1.1em;
+}
+
+div.admonition p.admonition-title, p.rubric {
+    font-weight: 600;
+}
+
+.guilabel, .menuselection {
+    font-weight: 600;
+}
