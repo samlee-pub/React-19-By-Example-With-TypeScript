@@ -19,11 +19,16 @@ export class StateUpdateComponent02 extends React.Component<
   };
   render() {
     return (
-      <div className="my-box-border-1 fg-blue">
-        Count: <b>{this.state.count}</b>
-        <button onClick={this.handleBtnClick} style={{ marginLeft: "2rem" }}>
-          Increment
-        </button>
+      <div className="my-box-border-1">
+        <div>
+          Passing a function to <b>this.setState</b>
+        </div>
+        <div className="my-box-border-1 fg-blue">
+          Count: <b>{this.state.count}</b>
+          <button onClick={this.handleBtnClick} style={{ marginLeft: "2rem" }}>
+            Increment
+          </button>
+        </div>
       </div>
     );
   }

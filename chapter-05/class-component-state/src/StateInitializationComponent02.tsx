@@ -2,6 +2,7 @@
  * State Initialization Example
  * This component demonstrates how to initialize state in a React class component.
  * The state is initialized with a count of a fixed value.
+ * The initialization is done directly in the class field declaration.
  */
 import React from "react";
 
@@ -11,6 +12,13 @@ export class StateInitializationComponent02 extends React.Component<
 > {
   state = { count: 7 };
   render() {
-    return <div>Count: {this.state.count}</div>;
+    return (
+      <div className="my-box-border-1">
+        <div>Initialize state in the class field declaration</div>
+        <div className="my-box-border-1 fg-blue">
+          Count: <b>{this.state.count}</b>
+        </div>
+      </div>
+    );
   }
 }
