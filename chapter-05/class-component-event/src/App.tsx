@@ -1,12 +1,12 @@
-import { EventHandlingNoArgument } from "./EventHandlingNoArgument";
 import "./App.css";
 import "./my-demo-styles.css";
+import { EventHandlingNoArgument } from "./EventHandlingNoArgument";
 import { EventHandlingWithArguments } from "./EventHandlingWithArguments";
 
 function App() {
   return (
     <div className="list-container">
-      <h2>React Components - Events</h2>
+      <h2>Class Components - Events</h2>
       <ol>
         <li className="list-item">
           <div className="list-item-number"></div>

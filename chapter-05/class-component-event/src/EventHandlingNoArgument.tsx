@@ -18,34 +18,69 @@ export class EventHandlingNoArgument extends React.Component<
     // Binding the class method
     // This is necessary for class methods, but not needed for arrow functions.
     this.incrementCount = this.incrementCount.bind(this);
+    this.incrementCount2 = this.incrementCount2.bind(this);
   }
 
-  // Class method approach
-  // This method is bound in the constructor
-  // Binding is necessary for class methods to ensure 'this' refers to the component instance
+  /**
+   * Class method approach
+   * This method is bound in the constructor
+   * Binding is necessary for class methods to ensure 'this' refers to the component instance
+   * @param value - The value to increment the count by
+   * @param e - The MouseEvent that triggered the increment
+   */
   incrementCount() {
     this.setState((prevState) => ({
       count: prevState.count + 1,
     }));
   }
-  // Class method approach
-  // Binding is necessary, but this method is not bound in the constructor
-  // Bind this in JSX when calling the method
+  /**
+   * Class method approach with event
+   * This method is bound in the constructor
+   * Binding is necessary for class methods to ensure 'this' refers to the component instance
+   * It accepts an event parameter, which can be used for additional functionality
+   * For example, it can alert the type of event that triggered the increment
+   * @param e - The MouseEvent that triggered the increment
+   */
+  incrementCount2(e: MouseEvent) {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
+    if (e) {
+      alert(`Count incremented with event: ${e.type}`);
+    }
+  }
+
+  /**
+   * Class method approach
+   * Binding is necessary, but this method is not bound in the constructor
+   * Bind this in JSX when calling the method
+   * @param value - The value to decrement the count by
+   * @param e - The MouseEvent that triggered the decrement
+   */
   decrementCount() {
     this.setState((prevState) => ({
       count: prevState.count - 1,
     }));
   }
-  // Arrow function approach (no binding needed)
-  // This method is defined as an arrow function, so 'this' is automatically bound to the component instance
+
+  /**
+   * Arrow function approach
+   * This method is defined as an arrow function, so 'this' is automatically bound to the component instance
+   * @param e - The MouseEvent that triggered the reset
+   * @returns void
+   */
   resetCount = () => {
     this.setState({
       count: 0,
     });
   };
-  // Arrow function approach with event
-  // This method is defined as an arrow function, so 'this' is automatically bound to the component instance
-  // It accepts an event parameter, which can be used for additional functionality
+
+  /**
+   * Arrow function approach with event
+   * This method is defined as an arrow function, so 'this' is automatically bound to the component instance
+   * It accepts an event parameter, which can be used for additional functionality
+   * @param e - The MouseEvent that triggered the reset
+   */
   resetCount2 = (e: MouseEvent) => {
     this.setState({
       count: 10,
@@ -63,7 +98,7 @@ export class EventHandlingNoArgument extends React.Component<
           </div>
           <div style={{ marginTop: "10px" }}>
             <button onClick={() => this.incrementCount()}>
-              Count ++ (Class method)
+              Count ++ (Class method bound in constructor)
             </button>
           </div>
           <div>
@@ -71,17 +106,27 @@ export class EventHandlingNoArgument extends React.Component<
               style={{ marginTop: "10px" }}
               onClick={this.decrementCount.bind(this)}
             >
-              Count -- (Class method)
+              Count -- (Class method bound in JSX)
             </button>
           </div>
           <div style={{ marginTop: "10px" }}>
             <button onClick={this.resetCount}>
-              Reset to 0 (Arrow function call with no event)
+              Reset to 0 (Arrow function)
+            </button>
+          </div>
+          <div style={{ marginTop: "10px" }}>
+            <button onClick={(e) => this.incrementCount2(e)}>
+              Count ++ (Class method with event)
             </button>
           </div>
           <div style={{ marginTop: "10px" }}>
             <button onClick={(e) => this.resetCount2(e)}>
               Reset to 10 (Arrow function call with event)
+            </button>
+          </div>
+          <div style={{ marginTop: "10px" }}>
+            <button onClick={this.resetCount2}>
+              Reset to 10 (Arrow function with implicit event)
             </button>
           </div>
         </div>
