@@ -1,8 +1,9 @@
 /**
- * ParentCounterComponent is a React functional component that manages a parent counter state.
- * This component displays the current value of the parent counter and provides a button to increment it.
- * It also renders the ChildCounterComponent, passing down the parent counter value and the increment handler
- * as props, allowing the child component to interact with the parent's counter state.
+ * This component manages a parent counter state and passes it down to a child component.
+ * It demonstrates how to lift state up in React, allowing the parent to control the counter state,
+ * while the child can also update the parent's counter.
+ * The child component receives the parent's counter and a function to update it.
+ * It is a common pattern in React to manage shared state between parent and child components.
  */
 import { useState } from "react";
 import { ChildCounterComponent } from "./ChildCounterComponent";

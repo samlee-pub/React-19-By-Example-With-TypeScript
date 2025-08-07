@@ -1,12 +1,9 @@
 /**
- * `StateManagementComponent` is a React functional component that demonstrates
- * state management concepts using various child components.
+ * This component demonstrates how to initialize and update state using React's useState hook.
  *
- * It renders two sections:
- * - **State Initialization**: Showcases examples of initializing state using
- *   `StateInitializationComponent01` and `StateInitializationComponent02`.
- * - **State Update**: Demonstrates state update patterns using
- *   `StateUpdateComponent01` and `StateUpdateComponent02`.
+ * The state is managed using the useState hook, which allows for both initialization and updates:
+ * - **State Initialization**: Showcases examples of initializing state
+ * - **State Update**: Demonstrates state update patterns
  */
 import { StateInitializationComponent01 } from "./StateInitializationComponent01";
 import { StateInitializationComponent02 } from "./StateInitializationComponent02";

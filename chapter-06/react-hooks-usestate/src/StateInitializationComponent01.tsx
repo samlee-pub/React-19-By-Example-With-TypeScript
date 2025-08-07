@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export function StateInitializationComponent01() {
   const [count] = useState(3);
+
   return (
     <div className="my-box-border-1">
       <div>

@@ -1,6 +1,7 @@
 /**
- * ChildCounterComponent displays both the parent and child counters,
- * and provides buttons to increment each counter.
+ * This component manages its own child counter state and receives the parent counter
+ * from its parent component. It provides buttons to increment both the parent and child counters.
+ * It demonstrates the use of the useState hook for local state management in React.
  *
  * @param parentCounter - The current value of the parent counter, passed from the parent component.
  * @param handleParentCounterUpdate - Callback function to increment the parent counter.
