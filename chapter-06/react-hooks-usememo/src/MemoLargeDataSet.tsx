@@ -1,5 +1,4 @@
 /**
- * MemoLargeDataSet.tsx
  * This component demonstrates the use of useMemo to optimize rendering of a large dataset.
  * It generates a Fibonacci sequence up to a specified index and uses useMemo to memoize the array.
  * The component allows you to update the Fibonacci index and re-render the component without recalculating the entire array.
