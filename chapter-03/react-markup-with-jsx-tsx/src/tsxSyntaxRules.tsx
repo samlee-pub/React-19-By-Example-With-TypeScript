@@ -18,7 +18,7 @@ export function Ex01SingleRootElement02() {
 
 /**
  * @ReactDOM Component: <Ex02AttributesInJSX01 />
- * @description Use className instead of class
+ * @description Use className instead of class for CSS class names.
  */
 export function Ex02AttributesInJSX01() {
   return <h4 className="text-color-blue">Hello World!</h4>;
@@ -65,10 +65,10 @@ export const Ex04JsExpression02 = () => {
 };
 
 /**
- * @ReactDOM Component: <Ex05InlineCSSStyles />
- * @description JavaScript expressions in Inline CSS Styles.
+ * @ReactDOM Component: <Ex05InlineCSSStyles01 />
+ * @description Assign an object directly to the style attribute.
  */
-export const Ex05InlineCSSStyles = () => {
+export const Ex05InlineCSSStyles01 = () => {
   return (
     <div style={{ backgroundColor: "grey", color: "blue" }}>
       Inline CSS Styles
@@ -76,6 +76,14 @@ export const Ex05InlineCSSStyles = () => {
   );
 };
 
+/**
+ * @ReactDOM Component: <Ex05InlineCSSStyles02 />
+ * @description Pass a predefined object to the style attribute.
+ */
+export const Ex05InlineCSSStyles02 = () => {
+  const styles = { backgroundColor: "blue", color: "red" };
+  return <div style={styles}>Inline CSS Styles</div>;
+};
 /**
  * @ReactDOM Component: <PersonApp person={{...}} />
  * @description Use of JavaScript objects
@@ -88,6 +96,19 @@ function PersonApp({ person }: { person: { name: string; age: number } }) {
   );
 }
 
-export const Ex06JsObjects = () => (
+/**
+ * @ReactDOM Component: <Ex06JsObjects01 />
+ * @description Assign an object directly to the person attribute.
+ */
+export const Ex06JsObjects01 = () => (
   <PersonApp person={{ name: "Hedy Lamarr", age: 25 }} />
 );
+
+/**
+ * @ReactDOM Component: <Ex06JsObjects02 />
+ * @description Pass a predefined object to the person attribute.
+ */
+export const Ex06JsObjects02 = () => {
+  const user = { name: "Judy Smith", age: 33 };
+  return <PersonApp person={user} />;
+};
