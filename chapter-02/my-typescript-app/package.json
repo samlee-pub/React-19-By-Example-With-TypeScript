@@ -7,8 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:tsc": "tsc --outDir dist-ts --target es2021 --module commonjs",
-    "lint": "eslint src ./*.js ./*.ts --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "eslint src ./*.js ./*.ts --ext ts,tsx --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "preview": "vite preview"
   },
   "dependencies": {
