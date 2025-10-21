@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" data-content_root="./">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html lang="en" data-content_root="./"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
       2. Chapter 2: TypeScript types — React 19 with TypeScript by Example
     </title>
-    <link rel="stylesheet" type="text/css" href="./index_files/pygments.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./index_files/html_leanbook1.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="./index_files/sphinx-design.min.css"
-    />
+    <link rel="stylesheet" type="text/css" href="./index_files/pygments.css">
+    <link rel="stylesheet" type="text/css" href="./index_files/html_leanbook1.css">
+    <link rel="stylesheet" type="text/css" href="./index_files/sphinx-design.min.css">
     <script src="./index_files/documentation_options.js"></script>
     <script src="./index_files/doctools.js"></script>
     <script src="./index_files/sphinx_highlight.js"></script>
     <script src="./index_files/design-tabs.js"></script>
-    <link rel="stylesheet" href="./index_files/custom.css" type="text/css" />
+    <link rel="stylesheet" href="./index_files/custom.css" type="text/css">
   </head>
   <body>
     <div class="document">
@@ -40,10 +30,10 @@
               </section>
             </div>
             <h1>
-              Chapter 02<br />
+              Chapter 02<br>
               <span style="font-size: 1.5rem">TypeScript types</span>
             </h1>
-            <hr />
+            <hr>
             <section id="step-by-step-guide">
               <section id="step-3-build-and-run-the-example-codes">
                 <h3>
@@ -53,14 +43,9 @@
                 <p><strong>1. The project structure:</strong></p>
                 <blockquote>
                   <div>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id11"
-                    >
+                    <div class="literal-block-wrapper docutils container" id="id11">
                       <div class="code-block-caption">
-                        <span class="caption-number">Listing 24 </span
-                        ><span class="caption-text">the project structure</span
-                        >
+                        <span class="caption-number">Listing 24 </span><span class="caption-text">the project structure</span>
                       </div>
                       <div class="highlight-cfg notranslate">
                         <div class="highlight">
@@ -73,8 +58,8 @@
 <span class="linenos"> 7</span><span class="na">│   └── src-ts/</span>
 <span class="linenos"> 8</span><span class="na">│       ├── index.ts</span>
 <span class="linenos"> 9</span><span class="na">│       ├── jsPrimitiveTypes.ts</span>
-<span class="linenos">10</span><span class="na">│       ├── typeScriptSpecificTypes.ts</span>
-<span class="linenos">11</span><span class="na">│       ├── customTypesAndInterfaces.ts</span>
+<span class="linenos">10</span><span class="na">│       ├── tsSpecificTypes.ts</span>
+<span class="linenos">11</span><span class="na">│       ├── customTypes.ts</span>
 <span class="linenos">12</span><span class="na">│       └── functionTypes.ts</span>
 <span class="linenos">13</span><span class="na">└── ... (other config files)</span>
 </pre>
@@ -91,7 +76,7 @@
 <span class="linenos">2</span><span class="w">  </span><span class="na">...,</span>
 <span class="linenos">3</span><span class="w">  </span><span class="na">"scripts"</span><span class="o">:</span><span class="w"> </span><span class="s">{</span>
 <span class="linenos">4</span><span class="w">    </span><span class="na">... ,</span>
-<span class="linenos">5</span><span class="w">    </span><span class="na">"build:tsc"</span><span class="o">:</span><span class="w"> </span><span class="s">"tsc --outDir dist-ts --target es2021 --module commonjs"</span><span class="na">,</span>
+<span class="linenos">5</span><span class="w">    </span><span class="na">"build:tsc"</span><span class="o">:</span><span class="w"> </span><span class="s">"tsc --outDir dist --target es2021 --module commonjs"</span><span class="na">,</span>
 <span class="linenos">6</span><span class="w">  </span><span class="na">},</span>
 <span class="linenos">7</span><span class="w">  </span><span class="na">... ,</span>
 <span class="linenos">8</span><span class="na">}</span>
@@ -101,22 +86,16 @@
 </div></blockquote>
                 <blockquote>
                   <div>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id12"
-                    >
+                    <div class="literal-block-wrapper docutils container" id="id12">
                       <div class="code-block-caption">
-                        <span class="caption-number">Listing 25 </span
-                        ><span class="caption-text"
-                          >compile and run src/src-ts/&lt;source&gt;.ts</span
-                        >
+                        <span class="caption-number">Listing 25 </span><span class="caption-text">compile and run src/src-ts/&lt;source&gt;.ts</span>
                       </div>
                       <div class="highlight-typescript notranslate">
                         <div class="highlight">
                           <pre><span></span><span class="linenos">1</span><span class="c1">// Compile</span>
 <span class="linenos">2</span><span class="nx">yarn</span><span class="w"> </span><span class="nx">build</span><span class="o">:</span><span class="kt">tsc</span><span class="w"> </span><span class="nx">src</span><span class="o">/</span><span class="nx">src</span><span class="o">-</span><span class="nx">ts</span><span class="o">/&lt;</span><span class="nx">source</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">ts</span>
 <span class="linenos">3</span><span class="c1">// Run</span>
-<span class="linenos">4</span><span class="nx">node</span><span class="w"> </span><span class="nx">dist</span><span class="o">-</span><span class="nx">ts</span><span class="o">/&lt;</span><span class="nx">source</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">js</span>
+<span class="linenos">4</span><span class="nx">node</span><span class="w"> </span><span class="nx">dist</span><span class="o"></span><span class="nx"></span><span class="o">/&lt;</span><span class="nx">source</span><span class="o">&gt;</span><span class="p">.</span><span class="nx">js</span>
 </pre>
                         </div>
                       </div>
@@ -135,76 +114,72 @@
                 <blockquote>
                   <div>
                     <p><strong>Source code:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id3"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 16 </span
-                        ><span class="caption-text"
-                          >contents of src/src-ts/jsPrimitiveTypes.ts</span
-                        >
-                      </div>
-                      <div class="highlight-typescript notranslate">
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos"> 1</span><span class="cm">/****************************************</span>
-<span class="linenos"> 2</span><span class="cm"> * JavaScript Primitive Types</span>
-<span class="linenos"> 3</span><span class="cm"> * Build: yarn tsc --target es2021</span>
-<span class="linenos"> 4</span><span class="cm"> *        --module commonjs &lt;filename&gt;.ts</span>
-<span class="linenos"> 5</span><span class="cm"> * Run: node &lt;filename&gt;.js</span>
-<span class="linenos"> 6</span><span class="cm"> ***************************************/</span>
-<span class="linenos"> 7</span><span class="c1">//using local scope, avoiding global pollution</span>
-<span class="linenos"> 8</span><span class="p">{</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="c1">// Declaring variables of different</span>
-<span class="linenos">10</span><span class="w">  </span><span class="c1">// primitive types</span>
-<span class="linenos">11</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isDone</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="linenos">12</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">decimal</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span>
-<span class="linenos">13</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">;</span>
-<span class="linenos">14</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">u</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
-<span class="linenos">15</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="linenos">16</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mySymbol</span><span class="o">:</span><span class="w"> </span><span class="kt">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">(</span><span class="s2">"myKey"</span><span class="p">);</span>
-<span class="linenos">17</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">big</span><span class="o">:</span><span class="w"> </span><span class="kt">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">BigInt</span><span class="p">(</span><span class="mf">123</span><span class="p">);</span>
-<span class="linenos">18</span><span class="w">  </span><span class="c1">// Displaying the types of the variables</span>
-<span class="linenos">19</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">isDone</span><span class="p">);</span>
-<span class="linenos">20</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">decimal</span><span class="p">);</span>
-<span class="linenos">21</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">name</span><span class="p">);</span>
-<span class="linenos">22</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">u</span><span class="p">);</span>
-<span class="linenos">23</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">n</span><span class="p">);</span>
-<span class="linenos">24</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">big</span><span class="p">);</span>
-<span class="linenos">25</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">mySymbol</span><span class="p">);</span>
-<span class="linenos">26</span><span class="p">}</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="my-custom-indent-4 docutils container">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">contents of src/src-ts/jsPrimitiveTypes.ts</span></div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cm">/****************************************</span>
+<span class="linenos"> 2</span><span class="cm"> * JavaScript Primitive Types Demonstration</span>
+<span class="linenos"> 3</span><span class="cm"> *</span>
+<span class="linenos"> 4</span><span class="cm"> * Primitive types are the basic building blocks in JavaScript.</span>
+<span class="linenos"> 5</span><span class="cm"> * They are immutable and represent single values.</span>
+<span class="linenos"> 6</span><span class="cm"> *</span>
+<span class="linenos"> 7</span><span class="cm"> * The Primitive Types in JavaScript:</span>
+<span class="linenos"> 8</span><span class="cm"> * 1. boolean    - true/false</span>
+<span class="linenos"> 9</span><span class="cm"> * 2. number     - integer and floating point numbers</span>
+<span class="linenos">10</span><span class="cm"> * 3. string     - textual data</span>
+<span class="linenos">11</span><span class="cm"> * 4. undefined  - uninitialized variable</span>
+<span class="linenos">12</span><span class="cm"> * 5. null       - intentional absence of value</span>
+<span class="linenos">13</span><span class="cm"> * 6. symbol     - unique and immutable primitive</span>
+<span class="linenos">14</span><span class="cm"> * 7. bigint     - arbitrary precision integers</span>
+<span class="linenos">15</span><span class="cm"> *</span>
+<span class="linenos">16</span><span class="cm"> * Build: yarn tsc --target es2021 --module commonjs jsPrimitiveTypes.ts</span>
+<span class="linenos">17</span><span class="cm"> * Run: node jsPrimitiveTypes.js</span>
+<span class="linenos">18</span><span class="cm"> ***************************************/</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="c1">//Using block scope ({}) to avoid global namespace pollution</span>
+<span class="linenos">21</span><span class="p">{</span>
+<span class="linenos">22</span><span class="w">  </span><span class="c1">// JavaScript Primitive Types</span>
+<span class="linenos">23</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isDone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Boolean type,  can be true or false</span>
+<span class="linenos">24</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">decimal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6</span><span class="p">;</span><span class="w"> </span><span class="c1">// Number type, can be integer or floating point</span>
+<span class="linenos">25</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bob"</span><span class="p">;</span><span class="w"> </span><span class="c1">// String type, represents textual data</span>
+<span class="linenos">26</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span><span class="w"> </span><span class="c1">// Undefined type, indicates uninitialized variable</span>
+<span class="linenos">27</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// Null type, represents intentional absence of any object value</span>
+<span class="linenos">28</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mySymbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">(</span><span class="s2">"myKey"</span><span class="p">);</span><span class="w"> </span><span class="c1">// Symbol type, represents a unique identifier</span>
+<span class="linenos">29</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">BigInt</span><span class="p">(</span><span class="mf">123</span><span class="p">);</span><span class="w"> </span><span class="c1">// BigInt type, represents arbitrary precision integers</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="w">  </span><span class="c1">// Displaying the types of all primitive variables using typeof operator</span>
+<span class="linenos">32</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"=== JavaScript Primitive Types ==="</span><span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`isDone (boolean): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">isDone</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "boolean"</span>
+<span class="linenos">35</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`decimal (number): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">decimal</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "number"</span>
+<span class="linenos">36</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`name (string): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "string"</span>
+<span class="linenos">37</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`u (undefined): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">u</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "undefined"</span>
+<span class="linenos">38</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`n (null): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">n</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof null returns "object"</span>
+<span class="linenos">39</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`big (bigint): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">big</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "bigint"</span>
+<span class="linenos">40</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`mySymbol (symbol): </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">mySymbol</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"> </span><span class="c1">// Note: typeof returns "symbol"</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"==================================="</span><span class="p">);</span>
+<span class="linenos">43</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
                     <p><strong>Compile and run:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id4"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 17 </span
-                        ><span class="caption-text"
-                          >compile and run src/src-ts/jsPrimitiveTypes.ts</span
-                        >
-                      </div>
-                      <div
-                        class="console-block-bg-black-fg-white highlight-bash notranslate"
-                      >
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos">1</span>$<span class="w"> </span>yarn<span class="w"> </span>build:tsc<span class="w"> </span>src/src-ts/jsPrimitiveTypes.ts
-<span class="linenos">2</span>$<span class="w"> </span>node<span class="w"> </span>dist-ts/jsPrimitiveTypes.js
-<span class="linenos">3</span>boolean
-<span class="linenos">4</span>number
-<span class="linenos">5</span>string
-<span class="linenos">6</span>undefined
-<span class="linenos">7</span>object
-<span class="linenos">8</span>bigint
-<span class="linenos">9</span>symbol
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="my-custom-indent-4 docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go"> &gt;yarn tsc --outDir dist --target es2021 --module commonjs src/src-ts/jsPrimitiveTypes.ts</span>
+<span class="linenos"> 2</span><span class="go"> &gt;node dist/jsPrimitiveTypes.js</span>
+<span class="linenos"> 3</span><span class="go"> === JavaScript Primitive Types ===</span>
+<span class="linenos"> 4</span><span class="go"> isDone (boolean): boolean</span>
+<span class="linenos"> 5</span><span class="go"> decimal (number): number</span>
+<span class="linenos"> 6</span><span class="go"> name (string): string</span>
+<span class="linenos"> 7</span><span class="go"> u (undefined): undefined</span>
+<span class="linenos"> 8</span><span class="go"> n (null): object</span>
+<span class="linenos"> 9</span><span class="go"> big (bigint): bigint</span>
+<span class="linenos">10</span><span class="go"> mySymbol (symbol): symbol</span>
+<span class="linenos">11</span><span class="go"> ===================================</span>
+</pre></div>
+</div>
+</div>
                   </div>
                 </blockquote>
                 <ol class="arabic simple" start="2">
@@ -215,128 +190,140 @@
                 <blockquote>
                   <div>
                     <p><strong>Source code:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id5"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 18 </span
-                        ><span class="caption-text"
-                          >contents of
-                          src/src-ts/typeScriptSpecificTypes.ts</span
-                        >
-                      </div>
-                      <div class="highlight-typescript notranslate">
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos"> 1</span><span class="cm">/****************************************</span>
-<span class="linenos"> 2</span><span class="cm"> * TypeScript-Specific Types</span>
-<span class="linenos"> 3</span><span class="cm"> * Build: yarn tsc --target es2021</span>
-<span class="linenos"> 4</span><span class="cm"> *        --module commonjs &lt;filename&gt;.ts</span>
-<span class="linenos"> 5</span><span class="cm"> * Run: node &lt;filename&gt;.js</span>
-<span class="linenos"> 6</span><span class="cm"> ***************************************/</span>
-<span class="linenos"> 7</span><span class="c1">//using local scope, avoiding global pollution</span>
-<span class="linenos"> 8</span><span class="p">{</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="c1">// 1. Union Types (|)</span>
-<span class="linenos">10</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos">11</span><span class="w">  </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
-<span class="linenos">12</span><span class="w">  </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">456</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK</span>
-<span class="linenos">13</span><span class="w">  </span><span class="c1">// userId = true;  // Error (not string or number)</span>
-<span class="linenos">14</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userId</span><span class="p">);</span>
-<span class="linenos">15</span>
-<span class="linenos">16</span><span class="w">  </span><span class="c1">// 2. Literal Types (Exact values)</span>
-<span class="linenos">17</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"inactive"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"active"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Literal types</span>
-<span class="linenos">18</span><span class="w">  </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Also allows number</span>
-<span class="linenos">19</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span>
-<span class="linenos">20</span>
-<span class="linenos">21</span><span class="w">  </span><span class="c1">// 3. Tuples (Fixed-length arrays)</span>
-<span class="linenos">22</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">];</span><span class="w"> </span><span class="c1">// Must match structure</span>
-<span class="linenos">23</span><span class="w">  </span><span class="c1">// person = [30, "Alice", true]; // Error (wrong order)</span>
-<span class="linenos">24</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
-<span class="linenos">25</span><span class="w">    </span><span class="nx">person</span><span class="p">,</span>
-<span class="linenos">26</span><span class="w">    </span><span class="s2">":"</span><span class="p">,</span>
-<span class="linenos">27</span><span class="w">    </span><span class="sb">`[</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span><span class="si">}</span><span class="sb">]`</span><span class="p">,</span>
-<span class="linenos">28</span><span class="w">  </span><span class="p">);</span>
-<span class="linenos">29</span>
-<span class="linenos">30</span><span class="w">  </span><span class="c1">// Named tuples (TypeScript 4.0+)</span>
-<span class="linenos">31</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">];</span>
-<span class="linenos">32</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
-<span class="linenos">33</span><span class="w">    </span><span class="nx">coordinates</span><span class="p">,</span>
-<span class="linenos">34</span><span class="w">    </span><span class="s2">":"</span><span class="p">,</span>
-<span class="linenos">35</span><span class="w">    </span><span class="sb">`[</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">coordinates</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">coordinates</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="si">}</span><span class="sb">]`</span><span class="p">,</span>
-<span class="linenos">36</span><span class="w">  </span><span class="p">);</span>
-<span class="linenos">37</span>
-<span class="linenos">38</span><span class="w">  </span><span class="c1">// 4. Any (Opt-out of type checking)</span>
-<span class="linenos">39</span><span class="w">  </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-explicit-any</span>
-<span class="linenos">40</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">dynamicValue</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">;</span><span class="w"> </span><span class="c1">//lint error: no-explicit-any</span>
-<span class="linenos">41</span><span class="w">  </span><span class="nx">dynamicValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span><span class="w"> </span><span class="c1">// Anything goes</span>
-<span class="linenos">42</span><span class="w">  </span><span class="nx">dynamicValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// No error</span>
-<span class="linenos">43</span><span class="w">  </span><span class="c1">// Use sparingly - defeats TypeScript's purpose!</span>
-<span class="linenos">44</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">dynamicValue</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">dynamicValue</span><span class="p">);</span>
-<span class="linenos">45</span>
-<span class="linenos">46</span><span class="w">  </span><span class="c1">// 5. Unknown (Type-safe any)</span>
-<span class="linenos">47</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">unknownValue</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"28"</span><span class="p">;</span>
-<span class="linenos">48</span><span class="w">  </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span><span class="w"> </span><span class="c1">// Anything goes</span>
-<span class="linenos">49</span><span class="w">  </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unknown value"</span><span class="p">;</span><span class="w"> </span><span class="c1">// No error</span>
-<span class="linenos">50</span>
-<span class="linenos">51</span><span class="w">  </span><span class="c1">// Must type-check before use</span>
-<span class="linenos">52</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">53</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">unknownValue</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
-<span class="linenos">54</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">55</span>
-<span class="linenos">56</span><span class="w">  </span><span class="c1">// 6. Void (No return value)</span>
-<span class="linenos">57</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">logMessage</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">58</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
-<span class="linenos">59</span><span class="w">    </span><span class="c1">// Implicitly returns undefined</span>
-<span class="linenos">60</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">61</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logMessage</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">logMessage</span><span class="p">);</span>
-<span class="linenos">62</span>
-<span class="linenos">63</span><span class="w">  </span><span class="c1">// 7. Never (Unreachable code)</span>
-<span class="linenos">64</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">never</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">65</span><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
-<span class="linenos">66</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">67</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">throwError</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">throwError</span><span class="p">);</span>
-<span class="linenos">68</span>
-<span class="linenos">69</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">infiniteLoop</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">never</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">70</span><span class="w">    </span><span class="c1">// eslint-disable-next-line no-empty</span>
-<span class="linenos">71</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">//lint error: Empty block statement</span>
-<span class="linenos">72</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">73</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">infiniteLoop</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">infiniteLoop</span><span class="p">);</span>
-<span class="linenos">74</span><span class="p">}</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">contents of src/src-ts/tsSpecificTypes.ts</span></div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/****************************************</span>
+<span class="linenos">  2</span><span class="cm"> * TypeScript-Specific Types Documentation</span>
+<span class="linenos">  3</span><span class="cm"> *</span>
+<span class="linenos">  4</span><span class="cm"> * TypeScript extends JavaScript with additional type system features:</span>
+<span class="linenos">  5</span><span class="cm"> * 1. Union Types (|)       - Variables that can hold multiple types</span>
+<span class="linenos">  6</span><span class="cm"> * 2. Literal Types         - Exact value constraints</span>
+<span class="linenos">  7</span><span class="cm"> * 3. Tuples                - Fixed-length, typed arrays</span>
+<span class="linenos">  8</span><span class="cm"> * 4. Any Type              - Opt-out of type checking (use sparingly)</span>
+<span class="linenos">  9</span><span class="cm"> * 5. Unknown Type          - Type-safe alternative to 'any'</span>
+<span class="linenos"> 10</span><span class="cm"> * 6. Void Type             - Absence of return value</span>
+<span class="linenos"> 11</span><span class="cm"> * 7. Never Type            - Values that never occur</span>
+<span class="linenos"> 12</span><span class="cm"> *</span>
+<span class="linenos"> 13</span><span class="cm"> * Build: yarn tsc --target es2021 --module commonjs tsSpecificTypes.ts</span>
+<span class="linenos"> 14</span><span class="cm"> * Run: node tsSpecificTypes.js</span>
+<span class="linenos"> 15</span><span class="cm"> ***************************************/</span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="c1">//using local scope, avoiding global pollution</span>
+<span class="linenos"> 18</span><span class="p">{</span>
+<span class="linenos"> 19</span><span class="w">  </span><span class="c1">// 1. Union Types (|)</span>
+<span class="linenos"> 20</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="linenos"> 21</span><span class="w">  </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - string type</span>
+<span class="linenos"> 22</span><span class="w">  </span><span class="nx">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">456</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK - number type</span>
+<span class="linenos"> 23</span><span class="w">  </span><span class="c1">// userId = true;  // Error - boolean not in union type</span>
+<span class="linenos"> 24</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Union Type - userId:"</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="s2">"| Type:"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">userId</span><span class="p">);</span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span><span class="w">  </span><span class="c1">// 2. Literal Types (Exact values)</span>
+<span class="linenos"> 27</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"inactive"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"OK"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"active"</span><span class="p">;</span>
+<span class="linenos"> 28</span><span class="w">  </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Valid - "OK" is in literal union</span>
+<span class="linenos"> 29</span><span class="w">  </span><span class="nx">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span><span class="w"> </span><span class="c1">// Valid - 200 is in literal union</span>
+<span class="linenos"> 30</span><span class="w">  </span><span class="c1">// status = "pending"; // Error - "pending" not in allowed literals</span>
+<span class="linenos"> 31</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Literal Type - status:"</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="s2">"| Type:"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span>
+<span class="linenos"> 32</span>
+<span class="linenos"> 33</span><span class="w">  </span><span class="c1">// 3. Tuple (Fixed-length array with specified types)</span>
+<span class="linenos"> 34</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">];</span>
+<span class="linenos"> 35</span><span class="w">  </span><span class="c1">// person = [30, "Alice", true]; // Error - wrong type order</span>
+<span class="linenos"> 36</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="s2">"Tuple - person:"</span><span class="p">,</span>
+<span class="linenos"> 38</span><span class="w">    </span><span class="nx">person</span><span class="p">,</span>
+<span class="linenos"> 39</span><span class="w">    </span><span class="s2">"| Types:"</span><span class="p">,</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="sb">`[</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">person</span><span class="p">[</span><span class="mf">2</span><span class="p">]</span><span class="si">}</span><span class="sb">]`</span><span class="p">,</span>
+<span class="linenos"> 41</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span><span class="w">  </span><span class="c1">// Named tuple: Tuple with labeled elements (TypeScript 4.0+)</span>
+<span class="linenos"> 44</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">20</span><span class="p">];</span>
+<span class="linenos"> 45</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="s2">"Named Tuple - coordinates:"</span><span class="p">,</span>
+<span class="linenos"> 47</span><span class="w">    </span><span class="nx">coordinates</span><span class="p">,</span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="s2">"| Types:"</span><span class="p">,</span>
+<span class="linenos"> 49</span><span class="w">    </span><span class="sb">`[</span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">coordinates</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">coordinates</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="si">}</span><span class="sb">]`</span><span class="p">,</span>
+<span class="linenos"> 50</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span><span class="w">  </span><span class="c1">// 4. Any (Opt-out of type checking)</span>
+<span class="linenos"> 53</span><span class="w">  </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-explicit-any</span>
+<span class="linenos"> 54</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">dynamicValue</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Lint error: no-explicit-any</span>
+<span class="linenos"> 55</span><span class="w">  </span><span class="nx">dynamicValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span><span class="w"> </span><span class="c1">// No type checking - anything allowed</span>
+<span class="linenos"> 56</span><span class="w">  </span><span class="nx">dynamicValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span><span class="w"> </span><span class="c1">// No error - complete type freedom</span>
+<span class="linenos"> 57</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="s2">"Any Type - dynamicValue:"</span><span class="p">,</span>
+<span class="linenos"> 59</span><span class="w">    </span><span class="nx">dynamicValue</span><span class="p">,</span>
+<span class="linenos"> 60</span><span class="w">    </span><span class="s2">"| Type:"</span><span class="p">,</span>
+<span class="linenos"> 61</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">dynamicValue</span><span class="p">,</span>
+<span class="linenos"> 62</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 63</span>
+<span class="linenos"> 64</span><span class="w">  </span><span class="c1">// 5. Unknown (Type-safe any)</span>
+<span class="linenos"> 65</span><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">unknownValue</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"28"</span><span class="p">;</span>
+<span class="linenos"> 66</span><span class="w">  </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span><span class="w"> </span><span class="c1">// Can assign anything like 'any'</span>
+<span class="linenos"> 67</span><span class="w">  </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unknown value"</span><span class="p">;</span><span class="w"> </span><span class="c1">// No assignment restrictions</span>
+<span class="linenos"> 68</span>
+<span class="linenos"> 69</span><span class="w">  </span><span class="c1">// Type checking required before operations</span>
+<span class="linenos"> 70</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">unknownValue</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 71</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unknown Type - string value:"</span><span class="p">,</span><span class="w"> </span><span class="nx">unknownValue</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+<span class="linenos"> 72</span><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">unknownValue</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unknown Type - array length:"</span><span class="p">,</span><span class="w"> </span><span class="nx">unknownValue</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="linenos"> 74</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span><span class="w">  </span><span class="c1">// 6. Void (No return value)</span>
+<span class="linenos"> 77</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">logMessage</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 78</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`VOID FUNCTION: </span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="linenos"> 79</span><span class="w">    </span><span class="c1">// No return statement - implicitly returns undefined</span>
+<span class="linenos"> 80</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 81</span><span class="w">  </span><span class="nx">logMessage</span><span class="p">(</span><span class="s2">"Hello from void function!"</span><span class="p">);</span>
+<span class="linenos"> 82</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 83</span><span class="w">    </span><span class="s2">"Void Function - logMessage:"</span><span class="p">,</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="nx">logMessage</span><span class="p">,</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="s2">"| Type:"</span><span class="p">,</span>
+<span class="linenos"> 86</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">logMessage</span><span class="p">,</span>
+<span class="linenos"> 87</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 88</span>
+<span class="linenos"> 89</span><span class="w">  </span><span class="c1">// 7. Never (Unreachable code)</span>
+<span class="linenos"> 90</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">throwError</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">never</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 91</span><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="linenos"> 92</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 93</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="s2">"Never Type - throwError:"</span><span class="p">,</span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="nx">throwError</span><span class="p">,</span>
+<span class="linenos"> 96</span><span class="w">    </span><span class="s2">"| Type:"</span><span class="p">,</span>
+<span class="linenos"> 97</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">throwError</span><span class="p">,</span>
+<span class="linenos"> 98</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 99</span>
+<span class="linenos">100</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">infiniteLoop</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">never</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">101</span><span class="w">    </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition</span>
+<span class="linenos">102</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">103</span><span class="w">      </span><span class="c1">// Infinite loop to ensure the function never returns</span>
+<span class="linenos">104</span><span class="w">    </span><span class="p">}</span>
+<span class="linenos">105</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">106</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos">107</span><span class="w">    </span><span class="s2">"Never Type - infiniteLoop:"</span><span class="p">,</span>
+<span class="linenos">108</span><span class="w">    </span><span class="nx">infiniteLoop</span><span class="p">,</span>
+<span class="linenos">109</span><span class="w">    </span><span class="s2">"| Type:"</span><span class="p">,</span>
+<span class="linenos">110</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">infiniteLoop</span><span class="p">,</span>
+<span class="linenos">111</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos">112</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
                     <p><strong>Compile and run:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id6"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 19 </span
-                        ><span class="caption-text"
-                          >compile and run
-                          src/src-ts/typeScriptSpecificTypes.ts</span
-                        >
-                      </div>
-                      <div
-                        class="console-block-bg-black-fg-white highlight-bash notranslate"
-                      >
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos"> 1</span>$<span class="w"> </span>yarn<span class="w"> </span>build:tsc<span class="w"> </span>src/src-ts/typeScriptSpecificTypes.ts
-<span class="linenos"> 2</span>$<span class="w"> </span>node<span class="w"> </span>dist-ts/typeScriptSpecificTypes.js
-<span class="linenos"> 3</span><span class="m">456</span><span class="w"> </span>:<span class="w"> </span>number
-<span class="linenos"> 4</span>OK<span class="w"> </span>:<span class="w"> </span>string
-<span class="linenos"> 5</span><span class="o">[</span><span class="w"> </span><span class="s1">'Alice'</span>,<span class="w"> </span><span class="m">30</span>,<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span>string,number,boolean<span class="o">]</span>
-<span class="linenos"> 6</span><span class="o">[</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="o">]</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span>number,number<span class="o">]</span>
-<span class="linenos"> 7</span><span class="m">42</span><span class="w"> </span>:<span class="w"> </span>number
-<span class="linenos"> 8</span>UNKNOWN<span class="w"> </span>VALUE
-<span class="linenos"> 9</span><span class="o">[</span>Function:<span class="w"> </span>logMessage<span class="o">]</span><span class="w"> </span>:<span class="w"> </span><span class="k">function</span>
-<span class="linenos">10</span><span class="o">[</span>Function:<span class="w"> </span>throwError<span class="o">]</span><span class="w"> </span>:<span class="w"> </span><span class="k">function</span>
-<span class="linenos">11</span><span class="o">[</span>Function:<span class="w"> </span>infiniteLoop<span class="o">]</span><span class="w"> </span>:<span class="w"> </span><span class="k">function</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="my-custom-indent-4 docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go"> &gt;yarn tsc --outDir dist --target es2021 --module commonjs src/src-ts/tsSpecificTypes.ts</span>
+<span class="linenos"> 2</span><span class="go"> &gt;node dist/tsSpecificTypes.js</span>
+<span class="linenos"> 3</span><span class="go"> Union Type - userId: 456 | Type: number</span>
+<span class="linenos"> 4</span><span class="go"> Literal Type - status: 200 | Type: number</span>
+<span class="linenos"> 5</span><span class="go"> Tuple - person: [ 'Alice', 30, true ] | Types: [string, number, boolean]</span>
+<span class="linenos"> 6</span><span class="go"> Named Tuple - coordinates: [ 10, 20 ] | Types: [number, number]</span>
+<span class="linenos"> 7</span><span class="go"> Any Type - dynamicValue: 42 | Type: number</span>
+<span class="linenos"> 8</span><span class="go"> Unknown Type - string value: UNKNOWN VALUE</span>
+<span class="linenos"> 9</span><span class="go"> VOID FUNCTION: Hello from void function!</span>
+<span class="linenos">10</span><span class="go"> Void Function - logMessage: [Function: logMessage] | Type: function</span>
+<span class="linenos">11</span><span class="go"> Never Type - throwError: [Function: throwError] | Type: function</span>
+<span class="linenos">12</span><span class="go"> Never Type - infiniteLoop: [Function: infiniteLoop] | Type: function</span>
+</pre></div>
+</div>
+</div>
                   </div>
                 </blockquote>
                 <ol class="arabic simple" start="3">
@@ -347,201 +334,195 @@
                 <blockquote>
                   <div>
                     <p><strong>Source code:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id7"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 20 </span
-                        ><span class="caption-text"
-                          >contents of
-                          src/src-ts/customTypesAndInterfaces.ts</span
-                        >
-                      </div>
-                      <div class="highlight-typescript notranslate">
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos">  1</span><span class="cm">/****************************************</span>
-<span class="linenos">  2</span><span class="cm"> * Custom Types &amp; Interfaces</span>
-<span class="linenos">  3</span><span class="cm"> * Build: yarn tsc --target es2021</span>
-<span class="linenos">  4</span><span class="cm"> *        --module commonjs &lt;filename&gt;.ts</span>
-<span class="linenos">  5</span><span class="cm"> * Run: node &lt;filename&gt;.js</span>
-<span class="linenos">  6</span><span class="cm"> ***************************************/</span>
-<span class="linenos">  7</span><span class="c1">//using local scope, avoiding global pollution</span>
-<span class="linenos">  8</span><span class="p">{</span>
-<span class="linenos">  9</span><span class="w">  </span><span class="c1">// 1. Type Aliases (type)</span>
-<span class="linenos"> 10</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos"> 11</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">OddNumberUnderTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"3"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"5"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"7"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"9"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Union of numbers and strings</span>
-<span class="linenos"> 12</span>
-<span class="linenos"> 13</span><span class="w">  </span><span class="c1">//Example usage of type aliases</span>
-<span class="linenos"> 14</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user1Id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"user-123"</span><span class="p">;</span>
-<span class="linenos"> 15</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">oddNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">OddNumberUnderTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="p">;</span>
-<span class="linenos"> 16</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"user1Id"</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="nx">user1Id</span><span class="p">);</span>
-<span class="linenos"> 17</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"oddNumber"</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="nx">oddNumber</span><span class="p">);</span>
-<span class="linenos"> 18</span>
-<span class="linenos"> 19</span><span class="w">  </span><span class="c1">// Object type</span>
-<span class="linenos"> 20</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 21</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserID</span><span class="p">;</span>
-<span class="linenos"> 22</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="linenos"> 23</span><span class="w">    </span><span class="nx">isAdmin?</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w"> </span><span class="c1">// Optional</span>
-<span class="linenos"> 24</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 25</span>
-<span class="linenos"> 26</span><span class="w">  </span><span class="c1">//Example usage of object type</span>
-<span class="linenos"> 27</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">alice</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 28</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<span class="linenos"> 29</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span>
-<span class="linenos"> 30</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 31</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">bob</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 32</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"user-456"</span><span class="p">,</span>
-<span class="linenos"> 33</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span>
-<span class="linenos"> 34</span><span class="w">    </span><span class="nx">isAdmin</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional property</span>
-<span class="linenos"> 35</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 36</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Alice:"</span><span class="p">,</span><span class="w"> </span><span class="nx">alice</span><span class="p">);</span>
-<span class="linenos"> 37</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Bob:"</span><span class="p">,</span><span class="w"> </span><span class="nx">bob</span><span class="p">);</span>
-<span class="linenos"> 38</span>
-<span class="linenos"> 39</span><span class="w">  </span><span class="c1">// 2. Interfaces (interface)</span>
-<span class="linenos"> 40</span><span class="w">  </span><span class="c1">// Basic interface</span>
-<span class="linenos"> 41</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IUser</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 42</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="linenos"> 43</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="linenos"> 44</span><span class="w">    </span><span class="nx">email?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Optional</span>
+<div class="my-custom-indent-4 docutils container">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">contents of src/src-ts/customTypes.ts</span></div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/****************************************</span>
+<span class="linenos">  2</span><span class="cm"> * Custom Types &amp; Interfaces Documentation</span>
+<span class="linenos">  3</span><span class="cm"> *</span>
+<span class="linenos">  4</span><span class="cm"> * TypeScript provides powerful tools for defining custom types:</span>
+<span class="linenos">  5</span><span class="cm"> * 1. Type Aliases (type)     - Create custom type definitions</span>
+<span class="linenos">  6</span><span class="cm"> * 2. Interfaces (interface)  - Define object shapes and contracts</span>
+<span class="linenos">  7</span><span class="cm"> * 3. Enums                  - Named constant collections</span>
+<span class="linenos">  8</span><span class="cm"> * 4. Type Composition       - Combine types using unions and intersections</span>
+<span class="linenos">  9</span><span class="cm"> * 5. Generic Types          - Create reusable type templates</span>
+<span class="linenos"> 10</span><span class="cm"> * 6. Type Assertions        - Override TypeScript's type inference</span>
+<span class="linenos"> 11</span><span class="cm"> *</span>
+<span class="linenos"> 12</span><span class="cm"> * Build: yarn tsc --target es2021 --module commonjs customTypes.ts</span>
+<span class="linenos"> 13</span><span class="cm"> * Run: node customTypes.js</span>
+<span class="linenos"> 14</span><span class="cm"> ***************************************/</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="c1">// Using block scope ({}) to avoid global namespace pollution</span>
+<span class="linenos"> 17</span><span class="p">{</span>
+<span class="linenos"> 18</span><span class="w">  </span><span class="c1">// 1. Type Aliases (type)</span>
+<span class="linenos"> 19</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="linenos"> 20</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">OddNumberUnderTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">7</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mf">9</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"1"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"3"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"5"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"7"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"9"</span><span class="p">;</span>
+<span class="linenos"> 21</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">MathOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// Function type alias</span>
+<span class="linenos"> 22</span><span class="w">  </span><span class="c1">// Example usage of type aliases</span>
+<span class="linenos"> 23</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user1Id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"user-123"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Valid - string type</span>
+<span class="linenos"> 24</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user2Id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">456</span><span class="p">;</span><span class="w"> </span><span class="c1">// Valid - number type</span>
+<span class="linenos"> 25</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">oddNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">OddNumberUnderTen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">7</span><span class="p">;</span><span class="w"> </span><span class="c1">// Valid - literal number</span>
+<span class="linenos"> 26</span><span class="w">  </span><span class="c1">// const invalidOdd: OddNumberUnderTen = 2; // Error - not in allowed values</span>
+<span class="linenos"> 27</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">add</span><span class="o">:</span><span class="w"> </span><span class="kt">MathOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// Matches function signature</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Type Aliases - User1 ID:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user1Id</span><span class="p">);</span>
+<span class="linenos"> 30</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Type Aliases - User2 ID:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user2Id</span><span class="p">);</span>
+<span class="linenos"> 31</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Type Aliases - Odd Number:"</span><span class="p">,</span><span class="w"> </span><span class="nx">oddNumber</span><span class="p">);</span>
+<span class="linenos"> 32</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Type Aliases Function - Add 2+3:"</span><span class="p">,</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="w">  </span><span class="c1">// 2. Interfaces (interface)</span>
+<span class="linenos"> 35</span><span class="w">  </span><span class="c1">// Basic interface</span>
+<span class="linenos"> 36</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IUser</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Required property</span>
+<span class="linenos"> 38</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Required property</span>
+<span class="linenos"> 39</span><span class="w">    </span><span class="nx">email?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="c1">// Optional property (marked with ?)</span>
+<span class="linenos"> 40</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 41</span>
+<span class="linenos"> 42</span><span class="w">  </span><span class="c1">// Extending interfaces</span>
+<span class="linenos"> 43</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IAdmin</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">IUser</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span><span class="w"> </span><span class="c1">// Additional required property</span>
 <span class="linenos"> 45</span><span class="w">  </span><span class="p">}</span>
 <span class="linenos"> 46</span>
-<span class="linenos"> 47</span><span class="w">  </span><span class="c1">// Extending interfaces</span>
-<span class="linenos"> 48</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IAdmin</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">IUser</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 49</span><span class="w">    </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
-<span class="linenos"> 50</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 51</span>
-<span class="linenos"> 52</span><span class="w">  </span><span class="c1">// Function interface</span>
-<span class="linenos"> 53</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">MathOperation</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 54</span><span class="w">    </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos"> 55</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 56</span>
-<span class="linenos"> 57</span><span class="w">  </span><span class="c1">//Example usage of interfaces</span>
-<span class="linenos"> 58</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">IUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 59</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"user1"</span><span class="p">,</span>
-<span class="linenos"> 60</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span>
-<span class="linenos"> 61</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 62</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">IUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 63</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"user2"</span><span class="p">,</span>
-<span class="linenos"> 64</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span>
-<span class="linenos"> 65</span><span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"abc@abc.com"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional property</span>
-<span class="linenos"> 66</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 67</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">add</span><span class="o">:</span><span class="w"> </span><span class="kt">MathOperation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
-<span class="linenos"> 68</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User1:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user1</span><span class="p">);</span>
-<span class="linenos"> 69</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User2:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user2</span><span class="p">);</span>
-<span class="linenos"> 70</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Add 2+3:"</span><span class="p">,</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
-<span class="linenos"> 71</span>
-<span class="linenos"> 72</span><span class="w">  </span><span class="c1">// 3. Enums (Named constants)</span>
-<span class="linenos"> 73</span><span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="nx">Direction</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 74</span><span class="w">    </span><span class="nx">Up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">,</span>
-<span class="linenos"> 75</span><span class="w">    </span><span class="nx">Down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"DOWN"</span><span class="p">,</span>
-<span class="linenos"> 76</span><span class="w">    </span><span class="nx">Left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"LEFT"</span><span class="p">,</span>
-<span class="linenos"> 77</span><span class="w">    </span><span class="nx">Right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"RIGHT"</span><span class="p">,</span>
-<span class="linenos"> 78</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 79</span><span class="w">  </span><span class="c1">// Numeric enums (auto-incremented)</span>
-<span class="linenos"> 80</span><span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="nx">StatusCode</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 81</span><span class="w">    </span><span class="nx">OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="linenos"> 82</span><span class="w">    </span><span class="nx">NotFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">404</span><span class="p">,</span>
-<span class="linenos"> 83</span><span class="w">    </span><span class="nx">ServerError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
-<span class="linenos"> 84</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 85</span>
-<span class="linenos"> 86</span><span class="w">  </span><span class="c1">// Example usage of enums</span>
-<span class="linenos"> 87</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">move</span><span class="o">:</span><span class="w"> </span><span class="kt">Direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Direction</span><span class="p">.</span><span class="nx">Up</span><span class="p">;</span>
-<span class="linenos"> 88</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">StatusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StatusCode</span><span class="p">.</span><span class="nx">OK</span><span class="p">;</span>
-<span class="linenos"> 89</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Direction:"</span><span class="p">,</span><span class="w"> </span><span class="nx">move</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">move</span><span class="p">);</span>
-<span class="linenos"> 90</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Status Code:"</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span>
-<span class="linenos"> 91</span>
-<span class="linenos"> 92</span><span class="w">  </span><span class="c1">// 4. Combining Types &amp; Interfaces</span>
-<span class="linenos"> 93</span><span class="w">  </span><span class="c1">// Intersection type (&amp;)</span>
-<span class="linenos"> 94</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
-<span class="linenos"> 95</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">};</span>
-<span class="linenos"> 96</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">Age</span><span class="p">;</span>
+<span class="linenos"> 47</span><span class="w">  </span><span class="c1">// Example usage of interfaces</span>
+<span class="linenos"> 48</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">IUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 49</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"user1"</span><span class="p">,</span>
+<span class="linenos"> 50</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span>
+<span class="linenos"> 51</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos"> 52</span>
+<span class="linenos"> 53</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">IUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"user2"</span><span class="p">,</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"bob@example.com"</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional property provided</span>
+<span class="linenos"> 57</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos"> 58</span>
+<span class="linenos"> 59</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"2. Interface - User1:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user1</span><span class="p">);</span>
+<span class="linenos"> 60</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"2. Interface - User2:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user2</span><span class="p">);</span>
+<span class="linenos"> 61</span>
+<span class="linenos"> 62</span><span class="w">  </span><span class="c1">// 3. Enums (Named Constant Collections)</span>
+<span class="linenos"> 63</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="nx">Direction</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 64</span><span class="w">    </span><span class="nx">Up</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">,</span>
+<span class="linenos"> 65</span><span class="w">    </span><span class="nx">Down</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"DOWN"</span><span class="p">,</span>
+<span class="linenos"> 66</span><span class="w">    </span><span class="nx">Left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"LEFT"</span><span class="p">,</span>
+<span class="linenos"> 67</span><span class="w">    </span><span class="nx">Right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"RIGHT"</span><span class="p">,</span>
+<span class="linenos"> 68</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 69</span><span class="w">  </span><span class="c1">// Numeric enums (auto-incremented)</span>
+<span class="linenos"> 70</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="nx">StatusCode</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 71</span><span class="w">    </span><span class="nx">OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="linenos"> 72</span><span class="w">    </span><span class="nx">NotFound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">404</span><span class="p">,</span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="nx">ServerError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">500</span><span class="p">,</span>
+<span class="linenos"> 74</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 75</span>
+<span class="linenos"> 76</span><span class="w">  </span><span class="c1">// Example usage of enums</span>
+<span class="linenos"> 77</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">move</span><span class="o">:</span><span class="w"> </span><span class="kt">Direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Direction</span><span class="p">.</span><span class="nx">Up</span><span class="p">;</span><span class="w"> </span><span class="c1">// Type-safe assignment</span>
+<span class="linenos"> 78</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">StatusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StatusCode</span><span class="p">.</span><span class="nx">OK</span><span class="p">;</span><span class="w"> </span><span class="c1">// Type-safe assignment</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"3. Enum String - Direction:"</span><span class="p">,</span><span class="w"> </span><span class="nx">move</span><span class="p">,</span><span class="w"> </span><span class="s2">"| Type:"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">move</span><span class="p">);</span>
+<span class="linenos"> 81</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 82</span><span class="w">    </span><span class="s2">"3. Enum Numeric - Status Code:"</span><span class="p">,</span>
+<span class="linenos"> 83</span><span class="w">    </span><span class="nx">status</span><span class="p">,</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="s2">"| Type:"</span><span class="p">,</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span>
+<span class="linenos"> 86</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span><span class="w">  </span><span class="c1">// 4. Type composition - Combining Types</span>
+<span class="linenos"> 89</span><span class="w">  </span><span class="c1">// Intersection type (&amp;)</span>
+<span class="linenos"> 90</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 91</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="linenos"> 92</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 93</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="linenos"> 95</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 96</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">Age</span><span class="p">;</span><span class="w"> </span><span class="c1">// Must have both name and age</span>
 <span class="linenos"> 97</span>
 <span class="linenos"> 98</span><span class="w">  </span><span class="c1">// Interface merging</span>
 <span class="linenos"> 99</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos">100</span><span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="linenos">101</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">102</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">103</span><span class="w">    </span><span class="nx">year</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// Merged</span>
-<span class="linenos">104</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">105</span><span class="w">  </span><span class="c1">//Example usage of combined types and interfaces</span>
-<span class="linenos">106</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="kt">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">};</span>
-<span class="linenos">107</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">myCar</span><span class="o">:</span><span class="w"> </span><span class="kt">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"Tesla"</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="o">:</span><span class="w"> </span><span class="kt">2023</span><span class="w"> </span><span class="p">};</span>
-<span class="linenos">108</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Person:"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">);</span>
-<span class="linenos">109</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Car:"</span><span class="p">,</span><span class="w"> </span><span class="nx">myCar</span><span class="p">);</span>
-<span class="linenos">110</span>
-<span class="linenos">111</span><span class="w">  </span><span class="c1">// 5. Generic Types</span>
-<span class="linenos">112</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">113</span><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span>
-<span class="linenos">114</span><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="linenos">115</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos">116</span>
-<span class="linenos">117</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IProduct</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">118</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="linenos">119</span><span class="w">    </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos">120</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos">121</span>
-<span class="linenos">122</span><span class="w">  </span><span class="c1">// Example usage of generic types</span>
-<span class="linenos">123</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">IAdmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">124</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="p">,</span>
-<span class="linenos">125</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Charlie"</span><span class="p">,</span>
-<span class="linenos">126</span><span class="w">    </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"read"</span><span class="p">,</span><span class="w"> </span><span class="s2">"write"</span><span class="p">],</span>
-<span class="linenos">127</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos">128</span>
-<span class="linenos">129</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">productResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">ApiResponse</span><span class="o">&lt;</span><span class="nx">IProduct</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos">130</span><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="kt">99</span><span class="w"> </span><span class="p">},</span>
-<span class="linenos">131</span><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">,</span>
-<span class="linenos">132</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos">133</span>
-<span class="linenos">134</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Admin:"</span><span class="p">,</span><span class="w"> </span><span class="nx">admin</span><span class="p">);</span>
-<span class="linenos">135</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Product Response:"</span><span class="p">,</span><span class="w"> </span><span class="nx">productResponse</span><span class="p">);</span>
-<span class="linenos">136</span>
-<span class="linenos">137</span><span class="w">  </span><span class="c1">// 6. Type Assertions (as)</span>
-<span class="linenos">138</span><span class="w">  </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-explicit-any</span>
-<span class="linenos">139</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pageNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"123"</span><span class="p">;</span>
-<span class="linenos">140</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numericPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pageNumber</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// Force type</span>
-<span class="linenos">141</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Numeric Page:"</span><span class="p">,</span><span class="w"> </span><span class="nx">numericPage</span><span class="p">,</span><span class="w"> </span><span class="s2">":"</span><span class="p">,</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numericPage</span><span class="p">);</span>
-<span class="linenos">142</span><span class="p">}</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<span class="linenos">102</span>
+<span class="linenos">103</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">104</span><span class="w">    </span><span class="nx">year</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// Merged with previous Car declaration</span>
+<span class="linenos">105</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">106</span>
+<span class="linenos">107</span><span class="w">  </span><span class="c1">// Example usage of composed types</span>
+<span class="linenos">108</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">person</span><span class="o">:</span><span class="w"> </span><span class="kt">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">109</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span>
+<span class="linenos">110</span><span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="p">,</span><span class="w"> </span><span class="c1">// Must satisfy both Name and Age interfaces</span>
+<span class="linenos">111</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos">112</span>
+<span class="linenos">113</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">myCar</span><span class="o">:</span><span class="w"> </span><span class="kt">Car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">114</span><span class="w">    </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="s2">"Tesla"</span><span class="p">,</span>
+<span class="linenos">115</span><span class="w">    </span><span class="nx">year</span><span class="o">:</span><span class="w"> </span><span class="kt">2023</span><span class="p">,</span><span class="w"> </span><span class="c1">// Must include properties from both Car declarations</span>
+<span class="linenos">116</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos">117</span>
+<span class="linenos">118</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"4. Composed Intersection Type - Person:"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">);</span>
+<span class="linenos">119</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"4. Composed Merged Interface - Car:"</span><span class="p">,</span><span class="w"> </span><span class="nx">myCar</span><span class="p">);</span>
+<span class="linenos">120</span>
+<span class="linenos">121</span><span class="w">  </span><span class="c1">// 5. Generic Types - Reusable Type Templates</span>
+<span class="linenos">122</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">ApiResponse</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">123</span><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span>
+<span class="linenos">124</span><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="linenos">125</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">126</span>
+<span class="linenos">127</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">IProduct</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">128</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="linenos">129</span><span class="w">    </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="linenos">130</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">131</span>
+<span class="linenos">132</span><span class="w">  </span><span class="c1">// Example usage of generic types and interface extension</span>
+<span class="linenos">133</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">admin</span><span class="o">:</span><span class="w"> </span><span class="kt">IAdmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">134</span><span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"admin1"</span><span class="p">,</span>
+<span class="linenos">135</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Charlie"</span><span class="p">,</span>
+<span class="linenos">136</span><span class="w">    </span><span class="nx">permissions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"read"</span><span class="p">,</span><span class="w"> </span><span class="s2">"write"</span><span class="p">],</span><span class="w"> </span><span class="c1">// Required by IAdmin interface</span>
+<span class="linenos">137</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos">138</span>
+<span class="linenos">139</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">productResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">ApiResponse</span><span class="o">&lt;</span><span class="nx">IProduct</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">140</span><span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">141</span><span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="linenos">142</span><span class="w">      </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="kt">99</span><span class="p">,</span>
+<span class="linenos">143</span><span class="w">    </span><span class="p">},</span>
+<span class="linenos">144</span><span class="w">    </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">,</span><span class="w"> </span><span class="c1">// Standard error handling pattern</span>
+<span class="linenos">145</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos">146</span>
+<span class="linenos">147</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5. Generic Types - Admin:"</span><span class="p">,</span><span class="w"> </span><span class="nx">admin</span><span class="p">);</span>
+<span class="linenos">148</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5. Generic Types - Product Response:"</span><span class="p">,</span><span class="w"> </span><span class="nx">productResponse</span><span class="p">);</span>
+<span class="linenos">149</span>
+<span class="linenos">150</span><span class="w">  </span><span class="c1">// 6. Type Assertions (as) - Overriding Type Inference</span>
+<span class="linenos">151</span><span class="w">  </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-explicit-any</span>
+<span class="linenos">152</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pageNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"123"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Avoid 'any' in real code</span>
+<span class="linenos">153</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">numericPage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pageNumber</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// Type assertion</span>
+<span class="linenos">154</span><span class="w">  </span><span class="c1">// const safeNumericPage = Number(pageNumber); // Better approach</span>
+<span class="linenos">155</span>
+<span class="linenos">156</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos">157</span><span class="w">    </span><span class="s2">"6. Type Assertion - Numeric Page:"</span><span class="p">,</span>
+<span class="linenos">158</span><span class="w">    </span><span class="nx">numericPage</span><span class="p">,</span>
+<span class="linenos">159</span><span class="w">    </span><span class="s2">"| Actual Type:"</span><span class="p">,</span>
+<span class="linenos">160</span><span class="w">    </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">numericPage</span><span class="p">,</span>
+<span class="linenos">161</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos">162</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
                     <p><strong>Compile and run:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id8"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 21 </span
-                        ><span class="caption-text"
-                          >compile and run
-                          src/src-ts/customTypesAndInterfaces.ts</span
-                        >
-                      </div>
-                      <div
-                        class="console-block-bg-black-fg-white highlight-bash notranslate"
-                      >
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos"> 1</span>$<span class="w"> </span>yarn<span class="w"> </span>build:tsc<span class="w"> </span>src/src-ts/customTypesAndInterfaces.ts
-<span class="linenos"> 2</span>$<span class="w"> </span>node<span class="w"> </span>dist-ts/customTypesAndInterfaces.js
-<span class="linenos"> 3</span>user1Id<span class="w"> </span>:<span class="w"> </span>user-123
-<span class="linenos"> 4</span>oddNumber<span class="w"> </span>:<span class="w"> </span><span class="m">7</span>
-<span class="linenos"> 5</span>Alice:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>name:<span class="w"> </span><span class="s1">'Alice'</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos"> 6</span>Bob:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="s1">'user-456'</span>,<span class="w"> </span>name:<span class="w"> </span><span class="s1">'Bob'</span>,<span class="w"> </span>isAdmin:<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos"> 7</span>User1:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="s1">'user1'</span>,<span class="w"> </span>name:<span class="w"> </span><span class="s1">'Alice'</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos"> 8</span>User2:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="s1">'user2'</span>,<span class="w"> </span>name:<span class="w"> </span><span class="s1">'Bob'</span>,<span class="w"> </span>email:<span class="w"> </span><span class="s1">'abc@abc.com'</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos"> 9</span>Add<span class="w"> </span><span class="m">2</span>+3:<span class="w"> </span><span class="m">5</span>
-<span class="linenos">10</span>Direction:<span class="w"> </span>UP<span class="w"> </span>:<span class="w"> </span>string
-<span class="linenos">11</span>Status<span class="w"> </span>Code:<span class="w"> </span><span class="m">200</span><span class="w"> </span>:<span class="w"> </span>number
-<span class="linenos">12</span>Person:<span class="w"> </span><span class="o">{</span><span class="w"> </span>name:<span class="w"> </span><span class="s1">'Alice'</span>,<span class="w"> </span>age:<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos">13</span>Car:<span class="w"> </span><span class="o">{</span><span class="w"> </span>model:<span class="w"> </span><span class="s1">'Tesla'</span>,<span class="w"> </span>year:<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos">14</span>Admin:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="s1">'admin1'</span>,<span class="w"> </span>name:<span class="w"> </span><span class="s1">'Charlie'</span>,<span class="w"> </span>permissions:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s1">'read'</span>,<span class="w"> </span><span class="s1">'write'</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos">15</span>Product<span class="w"> </span>Response:<span class="w"> </span><span class="o">{</span><span class="w"> </span>data:<span class="w"> </span><span class="o">{</span><span class="w"> </span>id:<span class="w"> </span><span class="s1">'1'</span>,<span class="w"> </span>price:<span class="w"> </span><span class="m">99</span><span class="w"> </span><span class="o">}</span>,<span class="w"> </span>error:<span class="w"> </span>null<span class="w"> </span><span class="o">}</span>
-<span class="linenos">16</span>Numeric<span class="w"> </span>Page:<span class="w"> </span><span class="m">123</span><span class="w"> </span>:<span class="w"> </span>string
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="my-custom-indent-4 docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go"> &gt;yarn tsc --outDir dist --target es2021 --module commonjs src/src-ts/customTypes.ts</span>
+<span class="linenos"> 2</span><span class="go"> &gt;node dist/customTypes.js</span>
+<span class="linenos"> 3</span><span class="go"> 1. Type Aliases - User1 ID: user-123</span>
+<span class="linenos"> 4</span><span class="go"> 1. Type Aliases - User2 ID: 456</span>
+<span class="linenos"> 5</span><span class="go"> 1. Type Aliases - Odd Number: 7</span>
+<span class="linenos"> 6</span><span class="go"> 1. Type Aliases Function - Add 2+3: 5</span>
+<span class="linenos"> 7</span><span class="go"> 2. Interface - User1: { id: 'user1', name: 'Alice' }</span>
+<span class="linenos"> 8</span><span class="go"> 2. Interface - User2: { id: 'user2', name: 'Bob', email: 'bob@example.com' }</span>
+<span class="linenos"> 9</span><span class="go"> 3. Enum String - Direction: UP | Type: string</span>
+<span class="linenos">10</span><span class="go"> 3. Enum Numeric - Status Code: 200 | Type: number</span>
+<span class="linenos">11</span><span class="go"> 4. Composed Intersection Type - Person: { name: 'Alice', age: 30 }</span>
+<span class="linenos">12</span><span class="go"> 4. Composed Merged Interface - Car: { model: 'Tesla', year: 2023 }</span>
+<span class="linenos">13</span><span class="go"> 5. Generic Types - Admin: { id: 'admin1', name: 'Charlie', permissions: [ 'read', 'write' ] }</span>
+<span class="linenos">14</span><span class="go"> 5. Generic Types - Product Response: { data: { id: '1', price: 99 }, error: null }</span>
+<span class="linenos">15</span><span class="go"> 6. Type Assertion - Numeric Page: 123 | Actual Type: string</span>
+</pre></div>
+</div>
+</div>
                   </div>
                 </blockquote>
                 <ol class="arabic simple" start="4">
@@ -552,162 +533,147 @@
                 <blockquote>
                   <div>
                     <p><strong>Source code:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id9"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 22 </span
-                        ><span class="caption-text"
-                          >contents of src/src-ts/functionTypes.ts</span
-                        >
-                      </div>
-                      <div class="highlight-typescript notranslate">
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos">  1</span><span class="cm">/****************************************</span>
-<span class="linenos">  2</span><span class="cm"> * Function Types</span>
-<span class="linenos">  3</span><span class="cm"> * Build: yarn tsc --target es2021</span>
-<span class="linenos">  4</span><span class="cm"> *        --module commonjs &lt;filename&gt;.ts</span>
-<span class="linenos">  5</span><span class="cm"> * Run: node &lt;filename&gt;.js</span>
-<span class="linenos">  6</span><span class="cm"> ***************************************/</span>
-<span class="linenos">  7</span><span class="c1">//using local scope, avoiding global pollution</span>
-<span class="linenos">  8</span><span class="p">{</span>
-<span class="linenos">  9</span><span class="w">  </span><span class="c1">// 1. funtion declaration with type annotations</span>
-<span class="linenos"> 10</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 11</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
-<span class="linenos"> 12</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 13</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"add(2, 3) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: add(2, 3) =  5</span>
-<span class="linenos"> 14</span><span class="w">  </span><span class="c1">// 2. function expression with type annotations</span>
-<span class="linenos"> 15</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">multiply</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 16</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
-<span class="linenos"> 17</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 18</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"multiply(2, 3) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">multiply</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: multiply(2, 3) =  6</span>
-<span class="linenos"> 19</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">multiply2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 20</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
-<span class="linenos"> 21</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 22</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"multiply2(2, 3) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">multiply2</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: multiply2(2, 3) =  6</span>
-<span class="linenos"> 23</span><span class="w">  </span><span class="c1">// 3. arrow function with type annotations</span>
-<span class="linenos"> 24</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">divide</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 25</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
-<span class="linenos"> 26</span><span class="w">  </span><span class="p">};</span>
-<span class="linenos"> 27</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"divide(6, 3) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">divide</span><span class="p">(</span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: divide(6, 3) =  2</span>
-<span class="linenos"> 28</span><span class="w">  </span><span class="c1">// 4. function with optional parameters</span>
-<span class="linenos"> 29</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">greeting?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 30</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">greeting</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">"Hello"</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
-<span class="linenos"> 31</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 32</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: Hello, Alice!</span>
-<span class="linenos"> 33</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">greet</span><span class="p">(</span><span class="s2">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hi"</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: Hi, Bob!</span>
-<span class="linenos"> 34</span><span class="w">  </span><span class="c1">// 5. function with default parameters</span>
-<span class="linenos"> 35</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">sayHello</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">greeting</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 36</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">greeting</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
-<span class="linenos"> 37</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 38</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sayHello</span><span class="p">(</span><span class="s2">"Charlie"</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: Hello, Charlie!</span>
-<span class="linenos"> 39</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sayHello</span><span class="p">(</span><span class="s2">"Dave"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Greetings"</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: Greetings, Dave!</span>
-<span class="linenos"> 40</span><span class="w">  </span><span class="c1">// 6. function with rest parameters</span>
-<span class="linenos"> 41</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="nx">...numbers</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 42</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">curr</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
-<span class="linenos"> 43</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 44</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"sum(1, 2, 3, 4) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: sum(1, 2, 3, 4) =  10</span>
-<span class="linenos"> 45</span><span class="w">  </span><span class="c1">// 7. function with a callback</span>
-<span class="linenos"> 46</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">processNumbers</span><span class="p">(</span>
-<span class="linenos"> 47</span><span class="w">    </span><span class="nx">numbers</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[],</span>
-<span class="linenos"> 48</span><span class="w">    </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
-<span class="linenos"> 49</span><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 50</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
-<span class="linenos"> 51</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 52</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">doubled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">processNumbers</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">num</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
-<span class="linenos"> 53</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Doubled numbers: "</span><span class="p">,</span><span class="w"> </span><span class="nx">doubled</span><span class="p">);</span><span class="w"> </span><span class="c1">//Output: Doubled numbers:  [2, 4, 6]</span>
-<span class="linenos"> 54</span><span class="w">  </span><span class="c1">// 8. function with a generic type</span>
-<span class="linenos"> 55</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">identity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 56</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arg</span><span class="p">;</span>
-<span class="linenos"> 57</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 58</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"identity(5) = "</span><span class="p">,</span><span class="w"> </span><span class="nx">identity</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: identity(5) =  5</span>
-<span class="linenos"> 59</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"identity('Hello') = "</span><span class="p">,</span><span class="w"> </span><span class="nx">identity</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">));</span><span class="w"> </span><span class="c1">//Output: identity('Hello') =  Hello</span>
-<span class="linenos"> 60</span><span class="w">  </span><span class="c1">// 9. function with a type alias</span>
-<span class="linenos"> 61</span><span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">StringOrNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos"> 62</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">printValue</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">StringOrNumber</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 63</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Value: "</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">);</span>
+<div class="my-custom-indent-4 docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">contents of src/src-ts/functionTypes.ts</span></div>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="cm">/****************************************</span>
+<span class="linenos">  2</span><span class="cm"> * Function Types Documentation</span>
+<span class="linenos">  3</span><span class="cm"> *</span>
+<span class="linenos">  4</span><span class="cm"> * TypeScript provides extensive function type capabilities:</span>
+<span class="linenos">  5</span><span class="cm"> * 1. Function Declarations - Traditional functions with type annotations</span>
+<span class="linenos">  6</span><span class="cm"> * 2. Function Expressions - Variables holding function references</span>
+<span class="linenos">  7</span><span class="cm"> * 3. Arrow Functions - Concise syntax with type safety</span>
+<span class="linenos">  8</span><span class="cm"> * 4. Callback Functions - Functions passed as arguments</span>
+<span class="linenos">  9</span><span class="cm"> * 5. Generic Functions - Type-parameterized reusable functions</span>
+<span class="linenos"> 10</span><span class="cm"> * 6. Optional Parameters - Parameters that can be omitted</span>
+<span class="linenos"> 11</span><span class="cm"> * 7. Default Parameters - Parameters with fallback values</span>
+<span class="linenos"> 12</span><span class="cm"> * 8. Rest Parameters - Variable number of arguments</span>
+<span class="linenos"> 13</span><span class="cm"> * 9. Object Parameters - Inline object type definitions</span>
+<span class="linenos"> 14</span><span class="cm"> * 10. Parameter Destructuring - Unpacking object parameters</span>
+<span class="linenos"> 15</span><span class="cm"> * 11. Type Aliases in Functions - Custom types for parameters/returns</span>
+<span class="linenos"> 16</span><span class="cm"> * 12. Interfaces in Functions - Object shapes as parameters</span>
+<span class="linenos"> 17</span><span class="cm"> * 13. Type Guards - Runtime type checking functions</span>
+<span class="linenos"> 18</span><span class="cm"> *</span>
+<span class="linenos"> 19</span><span class="cm"> * Build: yarn tsc --target es2021 --module commonjs functionTypes.ts</span>
+<span class="linenos"> 20</span><span class="cm"> * Run: node functionTypes.js</span>
+<span class="linenos"> 21</span><span class="cm"> ***************************************/</span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span><span class="c1">// Using block scope ({}) to avoid global namespace pollution</span>
+<span class="linenos"> 24</span><span class="p">{</span>
+<span class="linenos"> 25</span><span class="w">  </span><span class="c1">// 1. funtion declaration with type annotations</span>
+<span class="linenos"> 26</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 27</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="linenos"> 28</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 29</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"1. Function Declaration - add(2, 3) ="</span><span class="p">,</span><span class="w"> </span><span class="nx">add</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="w">  </span><span class="c1">// 2. function expression with type annotations</span>
+<span class="linenos"> 32</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">multiply</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 33</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="linenos"> 34</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos"> 35</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"2. Function Expression - multiply(2, 3) ="</span><span class="p">,</span><span class="w"> </span><span class="nx">multiply</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
+<span class="linenos"> 36</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">multiply2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="linenos"> 38</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos"> 39</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 40</span><span class="w">    </span><span class="s2">"2. Function Expression (Inferred) - multiply2(2, 3) ="</span><span class="p">,</span>
+<span class="linenos"> 41</span><span class="w">    </span><span class="nx">multiply2</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">),</span>
+<span class="linenos"> 42</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 43</span>
+<span class="linenos"> 44</span><span class="w">  </span><span class="c1">// 3. arrow function with type annotations</span>
+<span class="linenos"> 45</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">divide</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+<span class="linenos"> 47</span><span class="w">  </span><span class="p">};</span>
+<span class="linenos"> 48</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"3. Arrow Function - divide(6, 3) ="</span><span class="p">,</span><span class="w"> </span><span class="nx">divide</span><span class="p">(</span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">));</span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span><span class="w">  </span><span class="c1">// 4. function with a callback</span>
+<span class="linenos"> 51</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">processNumbers</span><span class="p">(</span>
+<span class="linenos"> 52</span><span class="w">    </span><span class="nx">numbers</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[],</span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="nx">callback</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span>
+<span class="linenos"> 54</span><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+<span class="linenos"> 56</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">doubled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">processNumbers</span><span class="p">([</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="nx">num</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+<span class="linenos"> 59</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"4. Function with callback - Doubled numbers:"</span><span class="p">,</span><span class="w"> </span><span class="nx">doubled</span><span class="p">);</span>
+<span class="linenos"> 60</span>
+<span class="linenos"> 61</span><span class="w">  </span><span class="c1">// 5. function with a generic type</span>
+<span class="linenos"> 62</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">identity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 63</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arg</span><span class="p">;</span>
 <span class="linenos"> 64</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 65</span><span class="w">  </span><span class="nx">printValue</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">);</span><span class="w"> </span><span class="c1">//Output: Value:  Hello</span>
-<span class="linenos"> 66</span><span class="w">  </span><span class="nx">printValue</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w"> </span><span class="c1">//Output: Value:  42</span>
-<span class="linenos"> 67</span><span class="w">  </span><span class="c1">// 10. function with an interface</span>
-<span class="linenos"> 68</span><span class="w">  </span><span class="kd">interface</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 69</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="linenos"> 70</span><span class="w">    </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
-<span class="linenos"> 71</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 72</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">displayUser</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 73</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`User: </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">, Age: </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="linenos"> 74</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 75</span><span class="w">  </span><span class="nx">displayUser</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//Output: User: Alice, Age: 30</span>
-<span class="linenos"> 76</span><span class="w">  </span><span class="c1">// 11. function with a type guard</span>
-<span class="linenos"> 77</span><span class="w">  </span><span class="c1">// eslint-disable-next-line @typescript-eslint/no-explicit-any</span>
-<span class="linenos"> 78</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">isString</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 79</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">;</span>
-<span class="linenos"> 80</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 81</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">processValue</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 82</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isString</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 83</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"String value: "</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">);</span>
-<span class="linenos"> 84</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 85</span><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Number value: "</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">);</span>
-<span class="linenos"> 86</span><span class="w">    </span><span class="p">}</span>
-<span class="linenos"> 87</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 88</span><span class="w">  </span><span class="nx">processValue</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">);</span><span class="w"> </span><span class="c1">//Output: String value:  Hello</span>
-<span class="linenos"> 89</span><span class="w">  </span><span class="nx">processValue</span><span class="p">(</span><span class="mf">42</span><span class="p">);</span><span class="w"> </span><span class="c1">//Output: Number value:  42</span>
-<span class="linenos"> 90</span><span class="w">  </span><span class="c1">//12. function with object type</span>
-<span class="linenos"> 91</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">displayUser2</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 92</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`User: </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">, Age: </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="linenos"> 93</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 94</span><span class="w">  </span><span class="nx">displayUser2</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//Output: User: Alice, Age: 30</span>
-<span class="linenos"> 95</span><span class="w">  </span><span class="c1">//13. function with destructuring</span>
-<span class="linenos"> 96</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">displayUser3</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos"> 97</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`User: </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">, Age: </span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="linenos"> 98</span><span class="w">  </span><span class="p">}</span>
-<span class="linenos"> 99</span><span class="w">  </span><span class="nx">displayUser3</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span><span class="w"> </span><span class="c1">//Output: User: Alice, Age: 30</span>
-<span class="linenos">100</span><span class="p">}</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<span class="linenos"> 65</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5. Generic Function - identity(5) ="</span><span class="p">,</span><span class="w"> </span><span class="nx">identity</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span>
+<span class="linenos"> 66</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"5. Generic Function - identity('Hello') ="</span><span class="p">,</span><span class="w"> </span><span class="nx">identity</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">));</span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span><span class="w">  </span><span class="c1">// 6. function with optional parameters</span>
+<span class="linenos"> 69</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">greeting?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 70</span><span class="w">    </span><span class="c1">// Nullish coalescing operator provides default value</span>
+<span class="linenos"> 71</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">greeting</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">"Hello"</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<span class="linenos"> 72</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 73</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"6. Optional Parameter - greet('Alice'):"</span><span class="p">,</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">));</span>
+<span class="linenos"> 74</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="s2">"6. Optional Parameter - greet('Bob', 'Hi'):"</span><span class="p">,</span>
+<span class="linenos"> 76</span><span class="w">    </span><span class="nx">greet</span><span class="p">(</span><span class="s2">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Hi"</span><span class="p">),</span>
+<span class="linenos"> 77</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="w">  </span><span class="c1">// 7. function with default parameters</span>
+<span class="linenos"> 80</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">sayHello</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">greeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 81</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">greeting</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">!`</span><span class="p">;</span>
+<span class="linenos"> 82</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 83</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 84</span><span class="w">    </span><span class="s2">"7. Default Parameter - sayHello('Charlie'):"</span><span class="p">,</span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="nx">sayHello</span><span class="p">(</span><span class="s2">"Charlie"</span><span class="p">),</span>
+<span class="linenos"> 86</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 87</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos"> 88</span><span class="w">    </span><span class="s2">"7. Default Parameter - sayHello('Dave', 'Greetings'):"</span><span class="p">,</span>
+<span class="linenos"> 89</span><span class="w">    </span><span class="nx">sayHello</span><span class="p">(</span><span class="s2">"Dave"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Greetings"</span><span class="p">),</span>
+<span class="linenos"> 90</span><span class="w">  </span><span class="p">);</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span><span class="w">  </span><span class="c1">// 8. function with rest parameters</span>
+<span class="linenos"> 93</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="nx">...numbers</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 94</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">numbers</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span><span class="w"> </span><span class="nx">curr</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">curr</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
+<span class="linenos"> 95</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos"> 96</span><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"8. Rest Parameters - sum(1, 2, 3, 4) ="</span><span class="p">,</span><span class="w"> </span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span><span class="w">  </span><span class="c1">//9. Function with inline object type parameter</span>
+<span class="linenos"> 99</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">displayUser</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">100</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos">101</span><span class="w">      </span><span class="sb">`9. Inline Object - User: </span><span class="si">${</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">, Age: </span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="linenos">102</span><span class="w">    </span><span class="p">);</span>
+<span class="linenos">103</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">104</span><span class="w">  </span><span class="nx">displayUser</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span>
+<span class="linenos">105</span>
+<span class="linenos">106</span><span class="w">  </span><span class="c1">//10. Function with parameter destructuring</span>
+<span class="linenos">107</span><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">displayUser2</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">108</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+<span class="linenos">109</span><span class="w">      </span><span class="sb">`10. Parameter Destructuring - User: </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">, Age: </span><span class="si">${</span><span class="nb">String</span><span class="p">(</span><span class="nx">age</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="linenos">110</span><span class="w">    </span><span class="p">);</span>
+<span class="linenos">111</span><span class="w">  </span><span class="p">}</span>
+<span class="linenos">112</span><span class="w">  </span><span class="nx">displayUser2</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="w"> </span><span class="p">});</span>
+<span class="linenos">113</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
                     <p><strong>Compile and run:</strong></p>
-                    <div
-                      class="literal-block-wrapper docutils container"
-                      id="id10"
-                    >
-                      <div class="code-block-caption">
-                        <span class="caption-number">Listing 23 </span
-                        ><span class="caption-text"
-                          >compile and run src/src-ts/functionTypes.ts</span
-                        >
-                      </div>
-                      <div
-                        class="console-block-bg-black-fg-white highlight-bash notranslate"
-                      >
-                        <div class="highlight">
-                          <pre><span></span><span class="linenos"> 1</span>$<span class="w"> </span>yarn<span class="w"> </span>build:tsc<span class="w"> </span>src/src-ts/functionTypes.ts
-<span class="linenos"> 2</span>$<span class="w"> </span>node<span class="w"> </span>dist-ts/functionTypes.js
-<span class="linenos"> 3</span>add<span class="o">(</span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">5</span>
-<span class="linenos"> 4</span>multiply<span class="o">(</span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">6</span>
-<span class="linenos"> 5</span>multiply2<span class="o">(</span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">6</span>
-<span class="linenos"> 6</span>divide<span class="o">(</span><span class="m">6</span>,<span class="w"> </span><span class="m">3</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">2</span>
-<span class="linenos"> 7</span>Hello,<span class="w"> </span>Alice!
-<span class="linenos"> 8</span>Hi,<span class="w"> </span>Bob!
-<span class="linenos"> 9</span>Hello,<span class="w"> </span>Charlie!
-<span class="linenos">10</span>Greetings,<span class="w"> </span>Dave!
-<span class="linenos">11</span>sum<span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">10</span>
-<span class="linenos">12</span>Doubled<span class="w"> </span>numbers:<span class="w">  </span><span class="o">[</span><span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="o">]</span>
-<span class="linenos">13</span>identity<span class="o">(</span><span class="m">5</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="m">5</span>
-<span class="linenos">14</span>identity<span class="o">(</span><span class="s1">'Hello'</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span>Hello
-<span class="linenos">15</span>Value:<span class="w">  </span>Hello
-<span class="linenos">16</span>Value:<span class="w">  </span><span class="m">42</span>
-<span class="linenos">17</span>User:<span class="w"> </span>Alice,<span class="w"> </span>Age:<span class="w"> </span><span class="m">30</span>
-<span class="linenos">18</span>String<span class="w"> </span>value:<span class="w">  </span>Hello
-<span class="linenos">19</span>Number<span class="w"> </span>value:<span class="w">  </span><span class="m">42</span>
-<span class="linenos">20</span>User:<span class="w"> </span>Alice,<span class="w"> </span>Age:<span class="w"> </span><span class="m">30</span>
-<span class="linenos">21</span>User:<span class="w"> </span>Alice,<span class="w"> </span>Age:<span class="w"> </span><span class="m">30</span>
-</pre>
-                        </div>
-                      </div>
-                    </div>
+<div class="my-custom-indent-4 docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go"> &gt;yarn tsc --outDir dist --target es2021 --module commonjs src/src-ts/functionTypes.ts</span>
+<span class="linenos"> 2</span><span class="go"> &gt;node dist/functionTypes.js</span>
+<span class="linenos"> 3</span><span class="go"> 1. Function Declaration - add(2, 3) = 5</span>
+<span class="linenos"> 4</span><span class="go"> 2. Function Expression - multiply(2, 3) = 6</span>
+<span class="linenos"> 5</span><span class="go"> 2. Function Expression (Inferred) - multiply2(2, 3) = 6</span>
+<span class="linenos"> 6</span><span class="go"> 3. Arrow Function - divide(6, 3) = 2</span>
+<span class="linenos"> 7</span><span class="go"> 4. Function with callback - Doubled numbers: [ 2, 4, 6 ]</span>
+<span class="linenos"> 8</span><span class="go"> 5. Generic Function - identity(5) = 5</span>
+<span class="linenos"> 9</span><span class="go"> 5. Generic Function - identity('Hello') = Hello</span>
+<span class="linenos">10</span><span class="go"> 6. Optional Parameter - greet('Alice'): Hello, Alice!</span>
+<span class="linenos">11</span><span class="go"> 6. Optional Parameter - greet('Bob', 'Hi'): Hi, Bob!</span>
+<span class="linenos">12</span><span class="go"> 7. Default Parameter - sayHello('Charlie'): Hello, Charlie!</span>
+<span class="linenos">13</span><span class="go"> 7. Default Parameter - sayHello('Dave', 'Greetings'): Greetings, Dave!</span>
+<span class="linenos">14</span><span class="go"> 8. Rest Parameters - sum(1, 2, 3, 4) = 10</span>
+<span class="linenos">15</span><span class="go"> 9. Inline Object - User: Alice, Age: 30</span>
+<span class="linenos">16</span><span class="go"> 10. Parameter Destructuring - User: Alice, Age: 30</span>
+</pre></div>
+</div>
+</div>
                   </div>
                 </blockquote>
               </section>
@@ -717,5 +683,6 @@
       </div>
       <div class="clearer"></div>
     </div>
-  </body>
-</html>
+  
+
+</body></html>
