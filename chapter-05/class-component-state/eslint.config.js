@@ -50,6 +50,12 @@ export default defineConfig([
         "warn",
         { allowConstantExport: true },
       ],
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        {
+          "allowNumber": true
+        }
+      ],
       "prettier/prettier": "warn",
       "@typescript-eslint/no-non-null-assertion": "off",
     },
