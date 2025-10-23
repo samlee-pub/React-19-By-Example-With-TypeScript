@@ -1,10 +1,16 @@
-.list-container {
+/*.list-container {
   max-width: 600px;
   width: max-content;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
-
+*/
+.list-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
 ol {
   padding-left: 0;
   counter-reset: list-counter;
@@ -20,8 +26,10 @@ ol {
   border-radius: 8px;
   border: 1px solid rgb(90, 95, 82);
 }
+
 .list-item-number {
   font-weight: bold;
+  width: 20px !important;
   margin-right: 10px;
   counter-increment: list-counter;
 }
@@ -60,7 +68,9 @@ ol {
   padding-right: 10px;
   border: 1px solid rgb(128, 128, 128);
   border-radius: 8px;
+  margin-top: 5px;
 }
+
 .text-color-blue {
   color: #0011ff;
   margin-top: auto;
@@ -75,6 +85,14 @@ ol {
   color: #0011ff;
 }
 
+.fg-green {
+  color: #008000;
+}
+
+.fg-black {
+  color: black;
+}
+
 .bg-red {
   background-color: #ff0000;
 }
@@ -87,3 +105,50 @@ ol {
   background-color: rgb(128, 128, 128);
 }
 
+.error, .error-text {
+  color: #ff0000;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.same-width-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.same-width-div {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+nav a.active {
+  font-weight: bold;
+  color: blue;
+}
+
+nav a {
+  font-weight: bold;
+  color: black;
+}
+nav a:not(:last-of-type) {
+  margin-right: 1rem;
+}
+.mr-1rem {
+  margin-right: 1rem;
+}
