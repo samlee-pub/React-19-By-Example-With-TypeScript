@@ -1,1 +1,140 @@
+<html>
+<head>
+<title>React Unit Testing - React Testing Library (RTL)</title>
+<style>
 
+pre {
+ /*padding:30px;*/
+ box-sizing:border-box;
+ -moz-box-sizing:border-box;
+ webkit-box-sizing:border-box;
+ display:block; 
+ white-space: pre-wrap;  
+ white-space: -moz-pre-wrap; 
+ white-space: -pre-wrap; 
+ white-space: -o-pre-wrap; 
+ /*word-wrap: break-word;*/
+ word-break: break-all;
+ width:100%;
+ /*overflow-x:auto;*/
+ page-break-before:avoid;
+ page-break-after: auto;
+ page-break-inside:auto;
+ break-before: avoid;
+ break-inside:auto;
+}
+
+.my-custom-indent-2 {
+    margin-left: 1rem !important; /* Fix indentation */
+}
+
+/* TOC Title margin-bottom */
+#contents > h1 {
+    margin-bottom: 1rem !important; /* Fix indentation */
+}
+
+/* TOC Title margin-bottom */
+.contents-h1-mb-1 {
+    margin-bottom: 1rem !important; /* Fix indentation */
+}
+
+.console-block-bg-black-fg-white div.highlight pre {
+  background: black;
+  color: white;
+  border: 0 !important; /* Fix indentation */
+  margin: 0rem !important;
+  padding-left: 0rem !important;
+  padding-right: 1rem !important;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+
+.list-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.list-container h2, .list-container .list-item-content h3{
+  text-align: center;
+}
+ol {
+  padding-left: 0;
+  counter-reset: list-counter;
+}
+
+div.highlight pre, div.highlight pre span {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+div.highlight pre span.gp {
+  color: yellow;
+}
+
+h1 { font-size: 2rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+h2 { font-size: 1.8rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+h3 { font-size: 1.6rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+h4 { font-size: 1.4rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+h5 { font-size: 1.15rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+h6 { font-size: 1rem; margin-block-start: 1rem; margin-block-end: 1rem; }
+</style>
+</head>
+<body><h1>12.2<br>
+<span style="font-size: 1.5rem;">React Unit Testing - React Testing Library (RTL)</span></h1><hr />
+<div class="my-custom-indent-2 docutils container">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number"></span><span class="caption-text">React Unit Testing using React Testing Library (RTL)</span></div>
+<div class="console-block-bg-black-fg-white highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="go"> &gt;yarn test</span>
+<span class="linenos"> 2</span><span class="go"> yarn run v1.22.22</span>
+<span class="linenos"> 3</span><span class="gp"> $ </span>vitest
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="go">  DEV  v3.2.4 ...</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="go">  ✓ src/tests/user-actions/fireevent.test.tsx (5 tests) 1911ms</span>
+<span class="linenos"> 8</span><span class="go">    ✓ user interactions &gt; fireEvent &gt; handle counter update  354ms</span>
+<span class="linenos"> 9</span><span class="go">    ✓ user interactions &gt; fireEvent &gt; handle async update  1137ms</span>
+<span class="linenos">10</span><span class="go">  ✓ src/tests/user-actions/userevent.test.tsx (5 tests) 2362ms</span>
+<span class="linenos">11</span><span class="go">    ✓ user interactions &gt; userEvent &gt; basic click event test  301ms</span>
+<span class="linenos">12</span><span class="go">    ✓ user interactions &gt; userEvent &gt; handle counter update  585ms</span>
+<span class="linenos">13</span><span class="go">    ✓ user interactions &gt; userEvent &gt; handle async update  1104ms</span>
+<span class="linenos">14</span><span class="go">  ✓ src/tests/queries/getquery.test.tsx (16 tests) 2734ms</span>
+<span class="linenos">15</span><span class="go">    ✓ queries &gt; getBy and getAllBy queries &gt; getByRole  1369ms</span>
+<span class="linenos">16</span><span class="go">    ✓ queries &gt; getBy and getAllBy queries &gt; getAllByRole  811ms</span>
+<span class="linenos">17</span><span class="go">  ✓ src/tests/components/Welcome.test.tsx (3 tests) 371ms</span>
+<span class="linenos">18</span><span class="go">  ✓ src/tests/queries/queryquery.test.tsx (16 tests) 1194ms</span>
+<span class="linenos">19</span><span class="go">    ✓ queries &gt; queryBy and queryAllBy queries &gt; queryByRole  410ms</span>
+<span class="linenos">20</span><span class="go">  ✓ src/tests/within/within.test.tsx (1 test) 430ms</span>
+<span class="linenos">21</span><span class="go">    ✓ queries &gt; within &gt; querying within elements  426ms</span>
+<span class="linenos">22</span><span class="go">  ✓ src/tests/queries/findquery.test.tsx (16 tests) 25957ms</span>
+<span class="linenos">23</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByText  3732ms</span>
+<span class="linenos">24</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByText  1049ms</span>
+<span class="linenos">25</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByRole  1398ms</span>
+<span class="linenos">26</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByRole  1181ms</span>
+<span class="linenos">27</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByLabelText  2064ms</span>
+<span class="linenos">28</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByLabelText  1063ms</span>
+<span class="linenos">29</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByPlaceholderText  2057ms</span>
+<span class="linenos">30</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByPlaceholderText  1048ms</span>
+<span class="linenos">31</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByDisplayValue  2049ms</span>
+<span class="linenos">32</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByDisplayValue  1036ms</span>
+<span class="linenos">33</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByAltText  2046ms</span>
+<span class="linenos">34</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByAltText  1035ms</span>
+<span class="linenos">35</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByTitle  2045ms</span>
+<span class="linenos">36</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByTitle  1041ms</span>
+<span class="linenos">37</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findByTestId  2059ms</span>
+<span class="linenos">38</span><span class="go">    ✓ queries &gt; findBy and findAllBy queries &gt; findAllByTestId  1051ms</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="go">  Test Files  7 passed (7)</span>
+<span class="linenos">41</span><span class="go">       Tests  62 passed (62)</span>
+<span class="linenos">42</span><span class="go">    Start at  16:25:26</span>
+<span class="linenos">43</span><span class="go">    Duration  29.56s (transform 473ms, setup 1.89s, collect 4.45s, tests 34.96s, environment 13.16s, prepare 1.79s)</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="go">  PASS  Waiting for file changes...</span>
+<span class="linenos">46</span><span class="go">        press h to show help, press q to quit</span>
+</pre></div>
+</div>
+</div>
+</div>
+</body></html>
