@@ -1,0 +1,9 @@
+/**
+  * This is a plain CSS file for styling.
+  * It includes classes for text color, background color, and margin.
+  */
+.plain-color-red { color: #ff0011; }
+.plain-color-blue { color: #3741c7; }
+.plain-bg-grey { background-color: #808080; }
+.plain-bg-blue { background-color: #0011ff; }
+.plain-m-2 { margin: 0.5rem; }
