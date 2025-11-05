@@ -1,0 +1,36 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Snapshots > basic snapshot test > inline snapshot 1`] = `
+{
+  "count": 2,
+  "items": [
+    "apple",
+    "banana",
+  ],
+}
+`;
+
+exports[`Snapshots > basic snapshot test > test on setup 1`] = `
+<div
+  className="user-card"
+>
+  <h2>
+    $
+    John Doe
+  </h2>
+  <p>
+    $
+    john@example.com
+  </p>
+</div>
+`;
+
+exports[`Snapshots > basic snapshot test > test snapshot match 1`] = `
+{
+  "count": Any<Number>,
+  "items": [
+    "apple",
+    "banana",
+  ],
+}
+`;
