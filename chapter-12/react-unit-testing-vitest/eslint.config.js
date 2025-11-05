@@ -11,7 +11,7 @@ import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["dist", "node_modules", "eslint.config.js", "tsconfig*.json"]),
+  globalIgnores(["dist", "node_modules", "eslint.config.js", "tsconfig*.json", "coverage"]),
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     extends: [
